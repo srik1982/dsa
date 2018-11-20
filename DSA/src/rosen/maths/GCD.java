@@ -1,4 +1,4 @@
-package maths;
+package rosen.maths;
 
 public class GCD {
 
