@@ -1,4 +1,4 @@
-package skiena.graphs;
+package graphs.v1;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -10,13 +10,13 @@ public class TopologicalSort {
 	public static void main(String[] args) {
 		Graph<Integer> graph = new Graph<Integer>();
 		graph.initGraph(8, true);
-		graph.insertEdge(0, 2);
-        graph.insertEdge(0, 1);
-        graph.insertEdge(2, 3);
-        graph.insertEdge(4, 5);
-        graph.insertEdge(5, 2);
-        graph.insertEdge(2, 7);
-        graph.insertEdge(7, 10);
+		graph.addEdge(0, 2);
+        graph.addEdge(0, 1);
+        graph.addEdge(2, 3);
+        graph.addEdge(4, 5);
+        graph.addEdge(5, 2);
+        graph.addEdge(2, 7);
+        graph.addEdge(7, 10);
         
         TopologicalSort ts = new TopologicalSort();
         

@@ -1,4 +1,4 @@
-package skiena.graphs;
+package graphs.v1;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,6 +24,8 @@ public class ArticulationPoints {
 		Set<VertexNode<T>> articulationPoints = new HashSet<VertexNode<T>>();
 		VertexNode<T> vertex = g.getVertices().get(0);
 		dfs(vertex, visited,parent,lowTime,articulationPoints);
+		
+		System.out.println(lowTime);
 		return articulationPoints;
 	}
 	
@@ -75,15 +77,15 @@ public class ArticulationPoints {
 	public static void main(String[] args) {
 		Graph<Integer> graph = new Graph<Integer>();
 		graph.initGraph(8, false);
-        graph.insertEdge(0, 1);
-        graph.insertEdge(1, 2);
-        graph.insertEdge(0, 2);
-        graph.insertEdge(0, 3);
-        graph.insertEdge(3, 4);
-        graph.insertEdge(4, 5);
-        graph.insertEdge(5, 6);
-        graph.insertEdge(6, 4);
-        graph.insertEdge(5, 7);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(0, 2);
+        graph.addEdge(0, 3);
+        graph.addEdge(3, 4);
+        graph.addEdge(4, 5);
+        graph.addEdge(5, 6);
+        graph.addEdge(6, 4);
+        graph.addEdge(5, 7);
         
         ArticulationPoints ap = new ArticulationPoints();
         Set<VertexNode<Integer>> aPoints = ap.findArticulationPoints(graph);

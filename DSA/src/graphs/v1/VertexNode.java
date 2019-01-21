@@ -1,4 +1,4 @@
-package skiena.graphs;
+package graphs.v1;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -8,7 +8,7 @@ import java.lang.Comparable;
 public class VertexNode<T extends Comparable> implements Comparable{
 	private T value;
 	private int degree;
-	private LinkedList<EdgeNode<T>> edgeNodes = new LinkedList<EdgeNode<T>>();
+	private ArrayList<EdgeNode<T>> edgeNodes = new ArrayList<EdgeNode<T>>();
 	
 	public VertexNode(T value) {
 		this.value = value;
@@ -64,6 +64,13 @@ public class VertexNode<T extends Comparable> implements Comparable{
 		return value.compareTo(val);
 	}
 	
+	public List<T> getEdgesTarget(){
+		List<T> edges = new ArrayList<T>();
+		for(VertexNode v : getAdjacencyList()) {
+			edges.add((T) v.getValue());
+		}
+		return edges;
+	}
 	
 	
 }

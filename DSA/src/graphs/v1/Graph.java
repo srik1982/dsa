@@ -1,4 +1,4 @@
-package skiena.graphs;
+package graphs.v1;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,8 +12,11 @@ public class Graph<T extends Comparable> {
 	 
 	private int nVertices;
 	private boolean directed;
-	private LinkedList<VertexNode<T>> vertices;
-
+	private List<VertexNode<T>> vertices;
+	Graph(){}
+	Graph(int vCount, boolean directed){
+		initGraph(vCount, directed);
+	}
 	public int getnVertices() {
 		return nVertices;
 	}
@@ -34,12 +37,12 @@ public class Graph<T extends Comparable> {
 	}
 
 
-	public LinkedList<VertexNode<T>> getVertices() {
+	public List<VertexNode<T>> getVertices() {
 		return vertices;
 	}
 
 
-	public void setVertices(LinkedList<VertexNode<T>> vertices) {
+	public void setVertices(List<VertexNode<T>> vertices) {
 		this.vertices = vertices;
 	}
 
@@ -47,30 +50,27 @@ public class Graph<T extends Comparable> {
 	public void initGraph(int nVertices, boolean directed) {
 		this.directed = directed;
 		this.nVertices = nVertices;
-		vertices = new LinkedList<VertexNode<T>>();
-	}
-//	public void initVertexNodes(T v) {
-//		vertices.add(new VertexNode<T>(v));
-//	}
-	
-	public void insertEdge(T x,T y) {
-		insertEdge(x,y,this.directed);
-	}
-	public void insertEdge(T x, T y, boolean directed) {
-		insertEdge(x,y,directed,0);
+		vertices = new ArrayList<VertexNode<T>>();
 	}
 	
-	public void insertEdge(T x, T y, boolean directed, int weight) {
+	public void addEdge(T x,T y) {
+		addEdge(x,y,this.directed);
+	}
+	public void addEdge(T x, T y, boolean directed) {
+		addEdge(x,y,directed,0);
+	}
+	
+	public void addEdge(T x, T y, boolean directed, int weight) {
 		EdgeNode<T> edge = new EdgeNode<T>(getVertexNode(y),weight);
 		getVertexNode(x).addEdge(edge);
 		getVertexNode(x).incrementDegree();
 		if(!directed) {
-			insertEdge(y,x,true,weight);
+			addEdge(y,x,true,weight);
 		}
 		
 	}
 	
-	private VertexNode<T> getVertexNode(T value){
+	public VertexNode<T> getVertexNode(T value){
 		VertexNode<T> node = null;
 		for(VertexNode<T> v : vertices) {
 			if(v.getValue().compareTo(value) == 0) {
@@ -86,20 +86,22 @@ public class Graph<T extends Comparable> {
 		return node;
 	}
 	
-//	public List<Integer> getAdjacentVertices(int vertex){
-//		List<Integer> adjacentVertices = null;
-//		for(VertexNode _v : vertices) {
-//			if(_v.getValue() == vertex) {
-//				adjacentVertices = _v.getAdjacencyList();
-//			}
-//		}
-//		return adjacentVertices;
-//	}
-	
 	public void printGraph() {
 		for(int i=0;i<vertices.size();i++) {
 			System.out.println(vertices.get(i));
 		}
+	}
+	
+	public Graph<T> reverseGraph(boolean directed, int vCount) {
+		Graph<T> newGraph = new Graph<T>(); 
+		newGraph.initGraph(vCount, directed);
+		for(VertexNode<T> v : getVertices()) {
+			List<T> targetNodes = v.getEdgesTarget();
+			for(T target: targetNodes) {
+				newGraph.addEdge(target, v.getValue());
+			}
+		}
+		return newGraph;
 	}
 	
 	
@@ -107,20 +109,13 @@ public class Graph<T extends Comparable> {
 		
 		Graph<Integer> g = new Graph<Integer>();
 		g.initGraph(5, false);
-//		
-//		g.initVertexNodes(0);
-//		g.initVertexNodes(1);
-//		g.initVertexNodes(2);
-//		g.initVertexNodes(3);
-//		g.initVertexNodes(4);
-		
-		g.insertEdge(0, 1);
-		g.insertEdge(0, 2);
-		g.insertEdge(1, 2);
-		g.insertEdge(1, 3);
-		g.insertEdge(2, 3);
-		g.insertEdge(3, 4);
-		g.insertEdge(4, 0);
+		g.addEdge(0, 1);
+		g.addEdge(0, 2);
+		g.addEdge(1, 2);
+		g.addEdge(1, 3);
+		g.addEdge(2, 3);
+		g.addEdge(3, 4);
+		g.addEdge(4, 0);
 		
 		g.printGraph();		
 	}

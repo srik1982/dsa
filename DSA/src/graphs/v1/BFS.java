@@ -1,4 +1,4 @@
-package skiena.graphs;
+package graphs.v1;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -18,13 +18,13 @@ public class BFS {
 //		g.initVertexNodes(3);
 //		g.initVertexNodes(4);
 		
-		g.insertEdge(0, 1);
-		g.insertEdge(0, 2);
-		g.insertEdge(1, 2);
-		g.insertEdge(1, 3);
-		g.insertEdge(2, 3);
-		g.insertEdge(3, 4);
-		g.insertEdge(4, 0);
+		g.addEdge(0, 1);
+		g.addEdge(0, 2);
+		g.addEdge(1, 2);
+		g.addEdge(1, 3);
+		g.addEdge(2, 3);
+		g.addEdge(3, 4);
+		g.addEdge(4, 0);
 		
 		BFS bfs = new BFS();
 		bfs.traverse(g,0);

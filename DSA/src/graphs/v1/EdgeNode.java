@@ -1,4 +1,4 @@
-package skiena.graphs;
+package graphs.v1;
 
 public class EdgeNode<T extends Comparable> {
 	public VertexNode<T> target;                                                                                                                                                                                      
