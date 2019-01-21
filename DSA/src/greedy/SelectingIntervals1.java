@@ -14,11 +14,11 @@ import java.util.Set;
  * @author srikanthrao
  *
  */
-public class SelectingIntervalsSubset {
+public class SelectingIntervals1 {
 
 	public static void main(String[] args) {
 		
-		SelectingIntervalsSubset obj = new SelectingIntervalsSubset();
+		SelectingIntervals1 obj = new SelectingIntervals1();
 		Interval i1 = obj.new Interval(2,5);
 		Interval i2 = obj.new Interval(3,6);
 		Interval i3 = obj.new Interval(6,12);
