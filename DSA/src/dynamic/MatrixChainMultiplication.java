@@ -29,7 +29,7 @@ public class MatrixChainMultiplication {
 		int x;
 		int y;
 		int result = 0;
-		List<Matrix> components;
+		StringBuilder components = new StringBuilder();
 		
 		Matrix(int x, int y){
 			this.x = x;
@@ -41,35 +41,20 @@ public class MatrixChainMultiplication {
 			this.result = result;
 		}
 		
-		void addComponents(Matrix m1, Matrix m2) {
-			if(components==null) {
-				components = new ArrayList<>();
-			}
-			components.add(m1);
-			components.add(m2);
+		void addComponents(String m1, String m2) {
+			
+			components.append(" { ").append(m1).append(" , ");
+			components.append(m2).append(" } ");
 		}
 		
-		void addComponents(List<Matrix> ms, Matrix m2) {
-			if(components==null) {
-				components = new ArrayList<>();
-			}
-			components.addAll(ms);
-			components.add(m2);
-		}
-		void addComponents(Matrix m1, List<Matrix> ms) {
-			if(components==null) {
-				components = new ArrayList<>();
-			}
-			components.add(m1);
-			components.addAll(ms);
-		}
+		
 		
 		public String toString() {
 			StringBuilder sb = new StringBuilder();
 			sb.append("<<< (").append(x).append(" , ");
 			sb.append(y).append(" ) => ").append(result);
 			sb.append('\n');
-			sb.append(components!=null ? components.toString() : "");
+			sb.append(components!=null ? components : "");
 			sb.append(" >>>");
 			return sb.toString();
 			
@@ -91,7 +76,7 @@ public class MatrixChainMultiplication {
 							Matrix right = matrices.get(k);
 							Matrix result = new Matrix(left.x, right.y, left.x * left.y * right.y);
 							table[j][k] = result;
-							result.addComponents(left, right);
+							result.addComponents(left.toString(), right.toString());
 						}else {
 							Matrix leftNeighbor = table[j][k-1];
 							Matrix bottomNeighbor = table[j+1][k];
@@ -104,11 +89,11 @@ public class MatrixChainMultiplication {
 							
 							if(r1 < r2) {
 								Matrix result = new Matrix(leftNeighbor.x, right.y, r1);
-								result.addComponents(leftNeighbor.components, right);
+								result.addComponents(leftNeighbor.components.toString(), right.toString());
 								table[j][k] = result;
 							}else {
 								Matrix result = new Matrix(left.x, bottomNeighbor.y, r2);
-								result.addComponents(left,bottomNeighbor.components);
+								result.addComponents(left.toString(),bottomNeighbor.components.toString());
 								table[j][k] = result;
 							}
 						}
