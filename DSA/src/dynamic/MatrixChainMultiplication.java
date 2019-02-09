@@ -3,6 +3,14 @@ package dynamic;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Multiply matrices m1, m2, m3,.. mn
+ * Let T(i,j) indicate the multiplication of matrices mi * mi+1 * .. mj
+ * T(i,j) =  { 0 if i==j because there is only 1 matrix and no multiplication
+ *           { mi * mj i.e., mix * miy * Miy  if i+1 = j  we are multiplying 2 matrices
+ *           { Min ( T(i,j-1) + m(i->j-1) * mj , mi + T(i+1,j) otherwise 
+ *
+ */
 public class MatrixChainMultiplication {
 
 	public static void main(String[] args) {

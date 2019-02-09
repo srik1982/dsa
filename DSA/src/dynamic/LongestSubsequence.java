@@ -4,6 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * we get the possibilities as described below:
+ * 1) If X[i] == Y[j] : 1 + LCS(i + 1,j + 1)
+ * 2) If X[i] ≠ Y[j]. LCS(i,j + 1) // skipping jth character of Y
+ * 3) If X[i] ≠ Y[j]. LCS(i + 1,j) // skipping ith character of X
+ * 
+ * LCS(i,j) = { 1+LCS(i+1,j+1)   if x[i] == y[j]
+ *            { Max( LCS(i, j+1), LCS(i+1, j) )   if x[i] != y[j]
+ */
 public class LongestSubsequence {
 
 	public static void main(String[] args) {

@@ -1,9 +1,18 @@
 package dynamic;
 
+/**
+ * LCS(i,j) = { 1 + LCS(i-1,j-1)  if x[i] == y[j]
+ *            { 0 otherwise
+ *
+ * A simple solution is to one by one consider all substrings of first string and for every substring check if it is a substring in second string. Keep track of the maximum length substring.
+ * There will be O(m^2) substrings and we can find whether a string is subsring on another string in O(n) time (See this). So overall time complexity of this method would be O(n * m2)
+ * Dynamic Programming can be used to find the longest common substring in O(m*n) time. The idea is to find length of the longest common suffix for all substrings of both strings and store these lengths in a table.
+ *
+ */
 public class LongestSubstring {
 
 	public static void main(String[] args) {
-		System.out.println(LongestSubstring.longestSubStringDp("abcdefg".toCharArray(), "xycdeji".toCharArray()));
+		System.out.println(LongestSubstring.longestSubStringDp("geeks for geeks".toCharArray(), "geek and".toCharArray()));
 	}
 	
 	public static char[] longestSubStringDp(char[] input1, char[] input2) {

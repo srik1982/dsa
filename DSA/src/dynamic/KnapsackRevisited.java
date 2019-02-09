@@ -4,6 +4,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * K(i,W) = { K(i-1,W)  if wi > W 
+ *          { Max ( K(i-1,W) , vi + K(i-1, W-wi) ) wi <= W
+ * W = Total weight of knapsack
+ * Vi is the values corresponding to weights Wi 
+ */
 public class KnapsackRevisited {
 
 	//map should be replaced with something else. it is overwriting the two 5s.
