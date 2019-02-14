@@ -1,4 +1,4 @@
-package dynamic;
+package dynamic.v1;
 
 import java.util.Arrays;
 import java.util.HashMap;

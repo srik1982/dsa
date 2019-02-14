@@ -1,4 +1,4 @@
-package dynamic;
+package dynamic.v1;
 
 public class MaxSubArrayDP {
 	static int maxSubArraySum(int a[], int size) {

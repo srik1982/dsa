@@ -1,4 +1,4 @@
-package dynamic;
+package dynamic.v1;
 
 /**
  * LCS(i,j) = { 1 + LCS(i-1,j-1)  if x[i] == y[j]
