@@ -84,6 +84,26 @@ public class PartitionSet {
 		
 		return retVal;
 	}
+	
+	public boolean canPartitionBottomUpDP(int []numbers, int sum) {
+		boolean [][] dp = new boolean[numbers.length][sum+1];
+		
+		// populate the sum=0 columns, as we can always for '0' sum with an empty set
+	    for(int i=0; i < numbers.length; i++)
+	      dp[i][0] = true;
+	    
+	    for(int i=0;i<numbers.length;i++) {
+	    	for(int j=1;j<=sum;j++) {
+	    		if(numbers[i] >= sum) {
+	    			dp[i][j] = dp[i-1][j-sum];
+	    		}else {
+	    			dp[i][j] = dp[i-1][j];
+	    		}
+	    	}
+	    }
+	    
+	    return dp[numbers.length-1][sum];
+	}
 
 
 }
