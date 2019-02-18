@@ -1,5 +1,10 @@
 package dynamic.v2;
 
+/*
+ * https://www.educative.io/collection/page/5668639101419520/5633779737559040/5745865499082752
+ * cut the rod is a same problem asked in different way -
+ * https://www.educative.io/collection/page/5668639101419520/5633779737559040/5729201025974272
+ */
 public class UnboundedKnapsack {
 
 	public static void main(String[] args) {

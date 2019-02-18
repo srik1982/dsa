@@ -1,5 +1,9 @@
 package dynamic.v2;
 
+/*
+ * https://www.educative.io/collection/page/5668639101419520/5633779737559040/5752754626625536
+ * Given a set of positive numbers, find if we can partition it into two subsets such that the sum of elements in both the subsets is equal.
+ */
 public class PartitionSet {
 
 	public static void main(String[] args) {
