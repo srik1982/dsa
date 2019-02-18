@@ -6,7 +6,7 @@ public class UnboundedKnapsack {
 		UnboundedKnapsack ks = new UnboundedKnapsack();
 	    int[] profits = { 15, 50, 60, 90 };
 	    int[] weights = { 1, 3, 4, 5 };
-	    int maxProfit = ks.getMaxProfitTopDownDP(weights,profits, 8);
+	    int maxProfit = ks.getMaxProfitBotUpDP(weights,profits, 8);
 	    System.out.println(maxProfit);
 	}
 	
@@ -48,6 +48,39 @@ public class UnboundedKnapsack {
 		}
 		// TODO Auto-generated method stub
 		return dp[index][capacity];
+	}
+	
+	int getMaxProfitBotUpDP(int weights[], int profits[], int capacity) {
+		int[][] dp = new int[weights.length][capacity+1];
+		
+		// this is not a set, we are discussing profits here, so we initialize to 0
+		for(int i=0;i<weights.length;i++) {
+			dp[i][0] = 0;
+		}
+		
+		//this is incorrect for this problem. because we can use the same weight again and again
+		//and not only once as it was in earlier problems 
+//		for(int i=1;i<=capacity;i++) {
+//			dp[0][i] = i == weights[0] ? 1 : 0;
+//		}
+		
+		for(int i=0;i<weights.length;i++) {
+			for(int j=1;j<=capacity;j++) {
+				int p1 = 0;
+				if(weights[i]<=j) {
+					p1 = profits[i] + dp[i][j-weights[i]];
+				}
+				int p2 = 0;
+				if(i>0) {
+					p2 = dp[i-1][j];
+				}
+				
+				dp[i][j] = Math.max(p1, p2);
+			}
+		}
+		
+		return dp[weights.length-1][capacity];
+		
 	}
 
 }
