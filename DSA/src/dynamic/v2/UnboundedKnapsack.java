@@ -79,8 +79,18 @@ public class UnboundedKnapsack {
 			}
 		}
 		
+		System.out.println("printing selected items");
+		for(int i=weights.length-1, j=capacity ; i>=0 && j>0; ) {
+			int value = dp[i][j];
+			if(value == dp[i-1][j]) {
+				i--;
+			}else {
+				System.out.println(weights[i]+" : "+profits[i]);
+				j = j - weights[i];
+			}
+		}
+		
 		return dp[weights.length-1][capacity];
 		
 	}
-
 }
