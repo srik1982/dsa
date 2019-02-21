@@ -30,6 +30,10 @@ package dynamic.v2;
 	and T(0) = 1, T(1) = 1, T(2) = 2.
 	
 	With this we should start implementing a fibonacci code.
+	https://www.dailycodingproblem.com/blog/staircase-problem/
+	
+	Other similar problems:
+	https://www.educative.io/collection/page/5668639101419520/5633779737559040/5724313353191424
  */
 public class Staircase {
 
