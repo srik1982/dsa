@@ -73,5 +73,5 @@ public class StaircaseWithFee {
 		
 		return minFee+fees[index];
 	}
-
+	
 }
