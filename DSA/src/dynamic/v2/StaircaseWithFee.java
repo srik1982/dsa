@@ -49,9 +49,9 @@ public class StaircaseWithFee {
 	public static void main(String[] args) {
 		StaircaseWithFee sc = new StaircaseWithFee();
 	    int[] fee = {1,2,5,2,1,2};
-	    System.out.println(sc.findJumpsWithMinFee(fee));
+	    System.out.println(sc.findJumpsWithMinFeeDP(fee));
 	    fee = new int[]{2,3,4,5};
-	    System.out.println(sc.findJumpsWithMinFee(fee));
+	    System.out.println(sc.findJumpsWithMinFeeDP(fee));
 	}
 	
 	public int findJumpsWithMinFee(int fees[]) {
@@ -74,4 +74,22 @@ public class StaircaseWithFee {
 		return minFee+fees[index];
 	}
 	
+	public int findJumpsWithMinFeeDP(int[] fees) {
+		int[] minFees = new int[fees.length+1];
+		
+		minFees[0] = 0;// if there are no steps, we dont have to pay any fee
+		minFees[1] = minFees[2] = minFees[3] = fees[0]; //because we can take upto 3 steps with fees paid in fees[0];
+		
+		for(int i=4;i<=fees.length;i++) {
+			//jump from i-3 to i using fees[i-3]. because we can take up to 3 steps.
+			//for i=4, we have already reached index 1 with fees[0] true, but from there to index =4, we need fees[1]
+			int x1 = minFees[i-3]+fees[i-3];
+			//similarly from i-2 to i, we can jump 2 steps with fees[i-2];
+			int x2 = minFees[i-2]+fees[i-2];
+			//and of course i-1 to i, 1 step jump
+			int x3 = minFees[i-1]+fees[i-1];
+			minFees[i] = Math.min(Math.min(x1,x2), x3);
+		}
+		return minFees[fees.length]; 
+	}
 }
