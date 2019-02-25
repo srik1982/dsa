@@ -62,17 +62,24 @@ public class PalindromicSubstring {
 			dp[i][i] = true;
 
 		int maxLength = 1;
+		int startIndex = -1, endIndex = -1;
 
 		for (int start = text.length() - 2; start >= 0; start--) {
 			for (int end = start + 1; end < text.length(); end++) {
 				if (text.charAt(start) == text.charAt(end)) {
 					if (end - start == 1 || dp[start + 1][end - 1]) {
-						dp[start][end] = true;
-						maxLength = Math.max(maxLength, end - start + 1);
+						if (maxLength < end - start + 1) {
+							startIndex = start;
+							endIndex = end;
+							maxLength = endIndex - startIndex + 1;
+						}
 					}
 				}
 			}
 		}
+		if (maxLength > 1)
+			System.out.println(" palindrome = " + text.substring(startIndex, endIndex + 1));
+
 		return maxLength;
 
 	}
