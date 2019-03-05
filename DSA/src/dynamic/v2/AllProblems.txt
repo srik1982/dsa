@@ -1,0 +1,50 @@
+Solved Problems
+----------------------------------------------------------------------------------------------------------------
+Some problems are more complex than others. So we need to go through these problems in a particular order.
+But given that I have already written lot of these problems already, i will try to add the new ones for now.
+At some point, i will put the older ones in the list.
+I am using this format - each program is given a number in multiples of 10. sometimes we write more than 1 class for the same problem.
+So, if knapsack is 10, KnapsacklessSpace will be 11. CountingCoins will be 20 and so on. 
+
+010. Knapsack.java : brute force and DP ( 2d array) solutions
+
+011. KnapsackLessSpace.java : space optimal solution which uses a 1d array instead of 2d array
+
+020. PartitionSet.java : partition into 2 subsets whose sum is equal
+
+030. SubsetSum.java : Given a set of positive numbers, determine if there exists a subset whose sum is equal to a given number
+
+040. MinDiffSubSets.java : Given a set of positive numbers, partition the set into two subsets with a minimum difference between their subset sums.
+
+050. CountOfSubSets.java : Given a set of positive numbers, find the total number of subsets whose sum is equal to a given number ‘S’.
+
+060. TargetSum.java : Given a set of positive numbers and a target sum ‘S’. Each number should be assigned either a ‘+’ or ‘-’ sign. We need to find out total ways to assign symbols to make the sum of numbers equal to target ‘S’.
+
+070. UnboundedKnapsack.java : Same as knapsack, that we need to maximize profit. But we can use the same weight any number of times.
+
+080. CountingCoins.java : Given an infinite supply of ‘n’ coin denominations and a total money amount, we are asked to find the total number of distinct ways to make up that amount.
+
+090. MinCoinsCount.java : Given an infinite supply of ‘n’ coin denominations and a total money amount, we are asked to find the MINIMUM number of coins needed to make up that amount.
+
+100. MaxRibbonsCut.java : We are given a ribbon of length n and a set of possible ribbon lengths. Now we need to cut the ribbon into the maximum number of pieces
+..
+..
+170. PalindromSubsequence.java : Longest Common subsequence
+
+180. PalindromicSubstring.java : Longest common substring
+
+200. Tiling a plot
+This is exactly same as fibonacci series. So not writing a code here. Refer this link to understand the problem
+https://www.geeksforgeeks.org/tiling-problem/
+
+210. WaysToScore.java : ways to score runs. based on permutations. Solved used recursion and DP
+
+220. CountingPalindromes:
+
+================================================================================================================
+Solutions Unknown
+-----------------------------------------------------------------------------------------------------------------
+1. Given a plot of dimensions 3xN and tiles of dimentions 1x2, In how many ways can we arrange the plot?
+ok, searched for this and found it to be very complex. Lets ignore.
+
+

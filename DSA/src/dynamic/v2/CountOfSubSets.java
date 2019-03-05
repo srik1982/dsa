@@ -3,7 +3,7 @@ package dynamic.v2;
 /**
  * https://www.educative.io/collection/page/5668639101419520/5633779737559040/5712536552865792
  * Given a set of positive numbers, find the total number of subsets whose sum is equal to a given number ‘S’.
- *
+ * each number is selected only once. and most probably the order matters as well.
  */
 public class CountOfSubSets {
 
