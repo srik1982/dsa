@@ -26,6 +26,14 @@ public class PalindromicSubstring {
 		System.out.println(lps.palindromeLengthDP("abdbca"));
 		System.out.println(lps.palindromeLengthDP("cddpd"));
 		System.out.println(lps.palindromeLengthDP("pqr"));
+		System.out.println(lps.palindromeLengthDP("abcbda"));
+		System.out.println(lps.palindromeLengthDP("adhbcbha"));
+		System.out.println();
+		System.out.println(lps.palindromeLengthDP2("abdbca"));
+		System.out.println(lps.palindromeLengthDP2("cddpd"));
+		System.out.println(lps.palindromeLengthDP2("pqr"));
+		System.out.println(lps.palindromeLengthDP2("abcbda"));
+		System.out.println(lps.palindromeLengthDP2("adhbcbha"));
 	}
 
 	public int palindromeLength(String text) {
@@ -54,7 +62,10 @@ public class PalindromicSubstring {
 
 		return Math.max(Math.max(p1, p2), p3);
 	}
-
+	/*
+	 * There are problems with this.
+	 * Also not intuitive because Palindromic subsequence uses a int[][] dp array and this uses a boolean[][]
+	 */
 	public int palindromeLengthDP(String text) {
 		boolean[][] dp = new boolean[text.length()][text.length()];
 
@@ -77,10 +88,36 @@ public class PalindromicSubstring {
 				}
 			}
 		}
-		if (maxLength > 1)
-			System.out.println(" palindrome = " + text.substring(startIndex, endIndex + 1));
+//		if (maxLength > 1)
+//			System.out.println(" palindrome = " + text.substring(startIndex, endIndex + 1));
 
 		return maxLength;
 
+	}
+	
+	/*
+	 * Learn and remember this. Intuitive and easy to remember.
+	 */
+	public int palindromeLengthDP2(String text) {
+		int n = text.length();
+		int[][] dp = new int[n][n];
+		
+		for(int i=0;i<n;i++) {
+			dp[i][i] = 1;
+		}
+		
+		for(int i=n-2;i>=0;i--) {
+			for(int j=i+1;j<n;j++) {
+				int len = j-i+1;
+				//the second condition maps directly to the Top Down solution.
+				if(text.charAt(i) == text.charAt(j) && dp[i+1][j-1] == len-2) {
+					dp[i][j] = dp[i+1][j-1]+2;
+				}else {
+					dp[i][j] = Math.max(dp[i][j-1], dp[i+1][j]);
+				}
+			}
+		}
+		
+		return dp[0][n-1];
 	}
 }
