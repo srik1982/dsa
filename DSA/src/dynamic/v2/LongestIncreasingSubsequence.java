@@ -60,10 +60,20 @@ public class LongestIncreasingSubsequence {
 					dp[i] = dp[j]+1;
 					max = Math.max(dp[i], max);
 				}
+				//i don't know why we don't have an else case here.
+				//ideally we should have. but when i think of it, i am not sure what to write inside else.
 			}
 		}
-		
-
 		return max;
 	}
+	/*
+	 * for (int i=1; i<nums.length; i++) {
+      dp[i] = 1;
+      for (int j=0; j<i; j++)
+        if (nums[i] > nums[j] && dp[i] <= dp[j] ) {
+          dp[i] = dp[j]+1;
+          maxLength = Math.max(maxLength, dp[i]);
+        }
+    }
+	 */
 }

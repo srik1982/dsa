@@ -21,7 +21,8 @@ public class LongestCommonSubsequence {
 		if(i==text1.length() || j==text2.length()) return 0;
 		
 		int s1 = 0, s2=0, s3=0;
-		
+		//you can either return within this block or compare all three s1,s2,s3
+		//Same result.
 		if(text1.charAt(i) == text2.charAt(j)) {
 			s1 = 1 + getLCSBF(text1, i+1, text2, j+1);
 		}

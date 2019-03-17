@@ -1,8 +1,6 @@
 Solved Problems
 ----------------------------------------------------------------------------------------------------------------
 Some problems are more complex than others. So we need to go through these problems in a particular order.
-But given that I have already written lot of these problems already, i will try to add the new ones for now.
-At some point, i will put the older ones in the list.
 I am using this format - each program is given a number in multiples of 10. sometimes we write more than 1 class for the same problem.
 So, if knapsack is 10, KnapsacklessSpace will be 11. CountingCoins will be 20 and so on. 
 
@@ -64,7 +62,13 @@ https://www.geeksforgeeks.org/tiling-problem/
 
 270. MaxSumIncreasingSubsequence.java: Given an array of n positive integers. Write a program to find the sum of maximum sum subsequence of the given array such that the integers in the subsequence are in increasing order.
 
-280. 
+280. MinLengthSuperSequence.java : Given two sequences ‘s1’ and ‘s2’, write a method to find the length of the shortest sequence which has ‘s1’ and ‘s2’ as subsequences
+
+290. MinDeletionsToSort.java : Given an integer array, find the minimum deletions to be made so that the array becomes sorted.
+
+300. LongestRepeatingSubsequence.java : Given a sequence, find the length of its longest repeating subsequence (LRS). A repeating subsequence will be the one that appears at least twice in the original sequence and is not overlapping (i.e. none of * the  corresponding characters in the repeating subsequences have the same index).
+
+310. SubsequencePatternMatching.java : Given a string and a pattern, write a method to count the number of times the pattern appears in the string as a subsequence.
 ================================================================================================================
 Solutions Unknown
 -----------------------------------------------------------------------------------------------------------------
