@@ -1,0 +1,75 @@
+There are some very simple problems and its not worth writing code for every problem there is.
+So, i will try to calalog all attempted problems here, including the ones i have written code here for.
+
+1. Add1ToLinkedListNumber.java : Add 1 to the number represented by the linked list. each node represents a single digit
+
+2. ReverseEveryKElements.java : Reverse entire list, reverse a group of k elements
+
+3. PalindromeList.java : Each node represents a char in a string. check if the linked list is palindrome or not.
+
+4. Detect loops, remove loops: 
+   a. Use slow ptr and fast ptr like in finding middle point. if slowPtr = fastPtr then there is a loop
+   b. reinitialize slow ptr to head of the list. let trailingPtr trail fastPtr by 1 step. Now keep incrementing both fast and slow ptrs by one step each, the point where they meet is the start of the loop. Remove link from trailing ptr to fast ptr to remove loop.
+
+5. remove last occurence of an item : 
+	Input:   1->2->3->5->2->10, key = 2
+	Output:  1->2->3->5->10
+   Iterate over entire list. prevNode, and nextNode would point to the last match. just make prevNode.next = nextNode.next
+
+6. RotateList.java : rotate by k nodes
+
+7. Delete M Nodes after N Nodes : Seems straight forward
+
+8. Merge a linked list in to another at alternate positions : straight forward again
+
+9. Insert a node in a sorted linked list : since we don't have indexes in a linked list, we can't use binary search. Use linear search. Alternatively if we use a hybrid of linked list and indexing ( like java linked list), we can use binary search. we need to use hashmap to store index vs node
+
+10. print list in reverse order: use recursion. after calling the recursive method for the next node, print this node's value
+
+11. 2 lists merging into 1. Find the first common node: 
+    a. M is the length of 1st list
+    b. N is the length of 2nd list.
+    c. Assuming N > M, find N-M
+    d. Start 2nd list and traverse N-M node. Now traverse both lists 1 steps at a time till the common node is reached.
+
+12. Even or Odd Length
+	Use slow and fast ptr. if fast ptr == null, even, otherwise odd.
+
+13. Merge2Lists.java : Merge 2 sorted lists : IMPORTANT
+
+14. Exchange adjacent elements : Have 2 pointers, prev and next, exchange their values and increment both by 2 nodes.
+	Don't forget to handle the corner cases like null.
+
+15. Josephus Circle: Given a circular linked list with elements 1 to n. Also given is a number m, m<n. Delete every mth node, circularly and find the last man standing. I was hoping there would be a mathematical solution to this problem. But this problem is mundane, just delete every mth element and see which one is left out. Boring.
+
+16. Random Pointers: Given a linked list with 2 pointers - 1 points to the next node and the other points to a random node. Clone this
+    Use a hashmap. A <-> a
+     			   B <-> b and so on.
+    for(Map.entry entry : map.entrySet){
+    	Node x = entry.getKey();
+    	Node y = entry.getValue();
+    	y.setNext(map.get(x.getNext()));
+    	y.setRandom(map.get(x.getRandom));
+    }
+
+17. Find the last kth node from the start.
+	Node modularNode can be set to 1st kth node, then 2nd, and so on. Once the while loop exits, you have the answer
+
+18. Find the 1st kth node from the end
+	If there are n nodes, we are looking for (n-k)th node.
+	Move a pointer k times head and then init a second one to head. Now move both 1 step at a time till we reach teh end.
+
+19. FractionalNode.java : find every (n/k)th node. if there are 22 nodes and k=7, we need to print 3rd node.
+
+20. ReorderLinkedList.java : Linked List : L1 -> L2 -> .. Ln-1 -> Ln | After Reorder : L1 -> Ln -> L2 -> Ln-1 ...
+
+21. Two lists. each represents a number. we need to add the two numbers in a separate list.
+	3 -> 5 -> 3  + 5 -> 5 -> 7 = 9 -> 1 -> 0
+	a. the two lists could be of two different lengths, so recursing till the end is not a straight forward approach
+	b. there might be carry and an extra node need to be added
+
+	Solution1 : Reverse both lists. Add iteratively, take carry to next addition. If no more nodes left, create a node for the carry. If one list contains more elements, you can copy the remaining ones.
+	Solution2 : Use length difference and start recursion after offsetting the longer list with N-M nodes. once the recursion returns the carry, add that to N-M-1 th node and copy others.
+
+22. Given a linked list with even and odd numbers, create an algorithm for making changes to the list in such a way that all even numbers appear at the beginning
+	Use evenPtr and oddPtr. traverse the list and even ptr would point to the even nodes and.. Basically, no extra space, just resetting the next links here.

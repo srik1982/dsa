@@ -29,11 +29,20 @@ public class Stack<E extends Object> {
 		return top == size-1;
 	}
 	
-	public E top() {
+	public E peek() {
 		if(top == -1) {
 			throw new IllegalStateException("Stack Empty");
 		}
 		return (E)stack[top]; 
+	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder("[ ");
+		for(int i=0;i<=top;i++) {
+			sb.append(stack[i].toString()).append(", ");
+		}
+		sb.append(" ]");
+		return sb.toString();
 	}
 
 	public static void main(String[] args) {

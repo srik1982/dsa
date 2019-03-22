@@ -12,4 +12,8 @@ public class SLLNode {
 		this(data);
 		this.next = next;
 	}
+	
+	public String toString() {
+		return String.valueOf(data);
+	}
 }

@@ -19,7 +19,7 @@ public class Merge2Lists {
 		sll2.add(8);
 		
 		Merge2Lists obj = new Merge2Lists();
-		SLLNode head = obj.merge(sll1.getHead(), sll2.getHead());
+		SLLNode head = obj.mergeIterative(sll1.getHead(), sll2.getHead());
 		SinglyLinkedList sll3 = new SinglyLinkedList();
 		sll3.setList(head);
 		sll3.traverse();
@@ -40,5 +40,41 @@ public class Merge2Lists {
 		}
 		return node;
 	}
-
+	
+	public SLLNode mergeIterative(SLLNode head1, SLLNode head2) {
+		if(head1==null && head2==null)return null;
+		if(head1==null && head2!=null)return head2;
+		if(head1!=null && head2==null)return head1;
+		
+		SLLNode merged = null, head = null;;
+		if(head1.data <= head2.data) {
+			merged = head1;
+			head1 = head1.next;
+		}else {
+			merged = head2;
+			head2 = head2.next;
+		}
+		head = merged;
+		
+		while(head1!=null && head2!=null) {
+			if(head1.data <=head2.data) {
+				merged.next = head1;
+				head1 = head1.next;
+			}else {
+				merged.next = head2;
+				head2 = head2.next;
+			}
+			merged = merged.next;
+		}
+		
+		while(head1!=null) {
+			merged.next = head1;
+			head1 = head1.next;
+		}
+		while(head2!=null) {
+			merged.next = head2;
+			head2 = head2.next;
+		}
+		return head;
+	}
 }

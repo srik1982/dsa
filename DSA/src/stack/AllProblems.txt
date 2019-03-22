@@ -1,0 +1,58 @@
+1. InfixToPostfix.java
+
+2. PostFix Evaluation: Pretty simple actually, so not writing code.
+	for(char c : postfix.toCharArray()){
+		if(isOperand(c)){
+			stack.push(c);
+		}else if(isUnaryOperator(c)){
+			int op = stack.pop();
+			stack.push(op-1); // or +1 based on the unary operator
+		}else if(isBinaryOperator(c)){
+			int op2 = stack.pop();
+			int op1 = stack.pop();
+			int result = op1 - op2; // or +, -, *, /
+			stack.push(result);
+		}
+	}
+	return stack.pop(); //result of the postfix evaluation
+
+3. EvaluateInfixExpr.java
+
+4. Reverse the stack
+   a. Use recursion : Time- O(n2) and Space O(n)
+   b. Use iteration with accessory array/list : copy to array after popping. read the array and push to stack. Since we use 2 parallel loops, it is O(n) & O(n)
+   I prefer the second, easy and straight forward.
+
+5. Intersection point of 2 linked lists. How do we find using a stack?
+	Use two stacks. and add the nodes of each linked list in to the stack, the top nodes on the stack represents the common ones. Pop till you get different nodes.
+
+6. Find spans. Given an array which represents stock price of a particular share for the day, find the longest span of increase.
+	a[] = 		6, 3, 4, 5, 2
+	spans[] =   1, 1, 2, 3, 1
+	Approach 1:
+	int[] spans = new int[a.length];
+	for(int i=0;i<a.length;i++){
+		int span = 1;
+		for(int j=0;j<i;i++){
+			if(a[j] > a[i]){
+				span++;
+			}
+		}
+		spans[i] = span; 
+	}
+	NO STACK. O(n2)
+
+	Approach 2:
+	int[] spans = new int[a.length];
+	init all spans elements to 1.
+	for(int i=1;i<a.length;i++){
+		int span = 1;
+		if(a[i] > a[i-1]){
+			spans[i] = spans[i-1]+1;
+		}
+	}
+	O(n)
+
+7. LargestRectangleUnderHistogram.java : Its a little difficult to understand for me. Hopefully after going through this again, i might be able to understand.
+
+8. SortUsingStack.java : Sorting a stack using an accessory stack. sort of like tower of hanoi.

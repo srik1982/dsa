@@ -69,6 +69,10 @@ https://www.geeksforgeeks.org/tiling-problem/
 300. LongestRepeatingSubsequence.java : Given a sequence, find the length of its longest repeating subsequence (LRS). A repeating subsequence will be the one that appears at least twice in the original sequence and is not overlapping (i.e. none of * the  corresponding characters in the repeating subsequences have the same index).
 
 310. SubsequencePatternMatching.java : Given a string and a pattern, write a method to count the number of times the pattern appears in the string as a subsequence.
+
+320. LongestBitonicSubsequence.java : Given a number sequence, find the length of its Longest Bitonic Subsequence (LBS). A subsequence is considered bitonic if it is monotonically increasing and then monotonically decreasing.
+
+330. 
 ================================================================================================================
 Solutions Unknown
 -----------------------------------------------------------------------------------------------------------------

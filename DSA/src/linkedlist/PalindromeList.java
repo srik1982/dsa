@@ -26,7 +26,6 @@ public class PalindromeList {
 		sll.add(5);
 		sll.add(3);
 		sll.add(1);
-		sll.add(10);
 		
 		PalindromeList obj = new PalindromeList();
 		System.out.println(obj.isPalindrome(sll.getHead()));
