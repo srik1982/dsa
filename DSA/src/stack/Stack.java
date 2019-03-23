@@ -44,6 +44,10 @@ public class Stack<E extends Object> {
 		sb.append(" ]");
 		return sb.toString();
 	}
+	
+	public int size() {
+		return top;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

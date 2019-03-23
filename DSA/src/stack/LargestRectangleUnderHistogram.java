@@ -3,7 +3,7 @@ package stack;
 public class LargestRectangleUnderHistogram {
 
 	public static void main(String[] args) {
-		System.out.println("Max area = "+getMaxAreaUnderHistogram(new int[] {6, 2, 5, 4, 5, 1, 6}));
+		System.out.println("Max area = "+getMaxAreaUnderHistogram(new int[] {2,3,4,5,3,1,3,4,5,6}));
 
 	}
 	
@@ -19,7 +19,7 @@ public class LargestRectangleUnderHistogram {
 				stack.push(i++);
 			}else {
 				int index = stack.pop();
-				int area = hist[index] * (stack.isEmpty() ? 1 : (i-stack.peek()-1));
+				int area = hist[index] * (stack.isEmpty() ? i : (i-stack.peek()-1));
 				if(area>max) {
 					max = area;
 				}
@@ -27,7 +27,7 @@ public class LargestRectangleUnderHistogram {
 		}
 		while(!stack.isEmpty()) {
 			int index = stack.pop();
-			int area = hist[index] * (stack.isEmpty() ? 1 : (i-stack.peek()-1));
+			int area = hist[index] * (stack.isEmpty() ? i : (i-stack.peek()-1));
 			if(area>max) {
 				max = area;
 			}

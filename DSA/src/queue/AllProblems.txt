@@ -1,0 +1,19 @@
+1. Reverse the contents of a queue. 
+	Trivial. dequeue and push to a queue. pop and enqueue.
+
+2. Implement Queue using 2 stacks.
+	Stacks s1 and s2.
+	enqueue => push onto s1.
+	qequeue => if s2 is not empty, pop from s2. else pop from s1 and push elements to s2. Then pop out from s2.
+
+3. You have a queue with A1, A2, .. An -> A1 being the front. We need to push them on to a stack such that A1 is at the top. Do it in O(n) time and no additional space.
+	dequeue and transfer all emenets to stack. So An will be on top of the stack. So pop all elements and enqueue, An will be at front an A1 will be at rear.
+	Now dequeue and push you will get the ordering. Just need to think outside the box here.
+
+4. Given a stack of numbers if the pairs of numbers are consecutive. if odd number of elements exist, the top of the stack can be ignored. 
+	This is not really a stack question. 
+	a. Pop and transfer the contents to a queue.
+	b. while transferring, increment a counter
+	c. if count is odd, dequeue() and discard the first element.
+	d. after this, we just need to compare every two pair of numbers.
+ 
