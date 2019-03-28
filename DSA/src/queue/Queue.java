@@ -25,7 +25,7 @@ public class Queue<E> {
 		que.enqueue(33);
 	}
 	
-	private final int size = 10;
+	private final int size = 20;
 	private Object[] q = new Object[size];
 	private int front=-1;
 	private int rear=-1;
@@ -52,7 +52,13 @@ public class Queue<E> {
 		if(isEmpty()) {
 			throw new IllegalStateException("Queue is Empty");
 		}
-		return (E) q[front++];
+		E elem = (E) q[front];
+		if(front == rear) {
+			front = rear = -1;
+		}else {
+			front++;
+		}
+		return elem;
 	}
 	
 	@SuppressWarnings("unchecked")

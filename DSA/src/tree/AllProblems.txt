@@ -1,0 +1,347 @@
+1. BinaryTreeTraversals.java : preOrder, inorder, postorder, level order and zigzag traversals
+
+2. Max Element in Binary Tree : Time Complexity: O(n). Space Complexity: O(n).
+	public int maxElement(BTNode node){
+		if(node!=null){
+			int left = maxElement(node.left); // you can optimize by putting null check avoids calls for the 2^d null nodes
+			int right = maxElement(node.right);
+			return max(this.data, left, right);
+		}else{
+			return Integer.MIN_VALUE;
+		}
+	}
+
+3. Max Element Iteratively: Time Complexity: O(n). Space Complexity: O(n).
+	public int maxElement(BTNode node){
+		Queue<BTNode> q = new Queue<BTNode>();
+		q.enqueue(node);
+		q.enqueue(null);
+		int max = Integer.MIN_VALUE;
+
+		while(!q.isEmpty()){			
+			while(q.front!=null){
+				BTNode n = q.dequeue();
+				if(n.data > max){
+					max = n.data;
+				}
+				q.enqueue(n.left);
+				q.enqueue(n.right);
+			}
+			q.dequeue();//remove null at front
+			q.enqueue(null);//add null at the rear to signal end of the level
+		}
+		return max;
+	}
+
+4. Search an element in Binary tree: Time Complexity: O(n). Space Complexity: O(n).
+	public boolean search(BTNode node, int data){
+		if(node!=null){
+			if(node.data == data){
+				return true;
+			}
+			boolean left = search(node.left); // you can optimize by putting null check avoids calls for the 2^d null nodes
+			boolean right = search(node.right);
+			return left || right;
+		}else{
+			return false;
+		}
+	}
+	for iterative use the level order traversal
+
+5. Insert an element in BT. Since we are not told to insert in a BST, insert anywhere.
+	public void insert(BTNode parent, BTNode node, int data){
+		if(node!=null){			
+			insert(node, node.left,data); // you can optimize by putting null check avoids calls for the 2^d null nodes
+			insert(node, node.right,data);
+		}else{
+			Node n = new Node(data);
+			parent.left = n;
+		}
+	}
+
+	public void insert(BTNode node, int data){
+		Queue<BTNode> q = new Queue<BTNode>();
+		q.enqueue(node);
+		q.enqueue(null);
+		int max = Integer.MIN_VALUE;
+		BTNode parent = node;
+		while(!q.isEmpty()){	
+			boolean inserted = false;		
+			while(q.front!=null){
+				BTNode n = q.dequeue();
+				
+				if(n.left !=null)
+					q.enqueue(n.left);
+				else{
+					n.left = new BTNode(data);
+					inserted = true;
+					break;
+				}
+
+				if(n.right != null)
+					q.enqueue(n.right);
+				else{
+					n.right = new BTNode(data);
+					inserted = true;
+					break;
+				}
+			}
+			if(inserted)break;
+
+			q.dequeue();//remove null at front
+			q.enqueue(null);//add null at the rear to signal end of the level
+		}
+		return max;
+	}
+
+6. Size of a Binary Tree.
+	public int size(BTNode root){
+		if(node == null){
+			return 0;
+		}else{
+			int lSize = size(root.left);
+			int rSize = size(root.right);
+			return lSize + rSize + 1; // +1 for this node
+		}
+	}
+
+	non-recursive
+	public int size(BTNode node){
+		Queue<BTNode> q = new Queue<BTNode>();
+		q.enqueue(node);
+		q.enqueue(null);
+		int size = 0;
+		while(!q.isEmpty()){		
+			while(q.front!=null){
+				BTNode n = q.dequeue();
+				size++;
+				if(n.left !=null)
+					q.enqueue(n.left);
+
+				if(n.right != null)
+					q.enqueue(n.right);
+			}
+
+			q.dequeue();//remove null at front
+			q.enqueue(null);//add null at the rear to signal end of the level
+		}
+		return size;
+	}
+
+7. Delete the tree. 
+	In C you have to deallocate the memory usign free. However in java set the root node reference to null. GC will handle the rest.
+
+8. Level Order traversal in reverse
+	Use a stack and push elements on to it. 
+
+9. HeightOfTree.java : Height of the tree. Height is the number of of edges from the farthest node to the root. 
+
+10. MinDepth.java : In a binary tree which is not full, depth can be different for different leaf nodes.
+
+11. Max Depth or Deepest node, is similar to MinDepth, except we do return 1 + Math.max(getMaxDepth(node.left),getMaxDepth(node.right));
+
+12. Delete a node : We are talking about deleting from an ordinary tree, not BST or Balanced BST here. So just remove the reference from the parent node.
+
+	public boolean deleteNode(BTNode root, int data){
+		return deleteNode(null,root,data);
+	}
+	boolean deleteNode(BTNode parent, BTNode node, data){
+		if(node==null){
+			return false; // not found here
+		}else if(node.data == data){
+			if(parent==null){
+				//nothing to do. node is a root node.
+			}else if(parent.left == node){
+				parent.left = null;
+				return true;
+			}else{
+				parent.right = null;
+				return true;
+			}
+		}else{
+			boolean left = deleteNode(node,node.left,data);
+			boolean right = false;
+			if(!left){
+				right = deleteNode(node,node.right,data);
+			}
+			return left || right;
+		}
+	}
+
+13. Number of leaf nodes.
+	Iterative:
+	Use Level order traversal. If the left and right points are null, increment count
+	Recursive:
+	int leafCount(BTNode node){
+		if(node==null){
+			return 0;
+		}else if(node.left==null && node.right==null){
+			return 1;
+		}else{
+			int left = leafCount(node.left);
+			int right = leafCount(node.right);
+			return left+right;
+		}
+	}
+	Time Complexity: O(n). Space Complexity: O(n).
+
+14. Iterative way to count the number of FULL nodes in a binary tree.
+	If node has both right and left children, then its called a full node.
+	Iterative: Use a level order traversal, and increment count full nodes
+	Recursive:
+	int fullNodeCount(BTNode node){
+		if(node == null) {
+			return -1;
+		}else if(node.right == null && node.left == null) {
+			return 0;
+		}else {
+			int left = getFullNodeCount(node.left);
+			int right = getFullNodeCount(node.right);
+			if(left>=0 && right>=0){//both child present
+				return left+right+1;
+			} else if(left>=0){//left child present, may be it has more full nodes in its subtree
+				return left;
+			}else if(right>=0){//right child present, may be it has more full nodes in its subtree
+				return right;
+			}else { // leaf node, return 0
+				return 0;
+			}
+		}
+	}
+	Time Complexity: O(n). Space Complexity: O(n).
+
+15. Half nodes. Nodes with only one child. Very similar to 13 and 14. So not going to discuss here.
+	Iterative is simple. not going to discuss here.
+	Recursive:
+	int halfNodeCount(BTNode node){
+		if(node == null) {//null pointers
+			return -1;
+		}else if(node.right == null && node.left == null) {//leaf node
+			return 0;
+		}else {
+			int left = halfNodeCount(node.left);
+			int right = halfNodeCount(node.right);
+			if(left>=0 && right==-1 || left==-1 && right>=0){//half node. i.e 1 child
+				return 1 + (left>=0 ? left : right);
+			} else if(left>=0 && right>=0){//full node, just pass on the sum from children
+				return left+right;
+			}else { //both left and right == -1 => leaf node
+				return 0;
+			}
+		}
+	}
+	Time Complexity: O(n). Space Complexity: O(n).
+
+16. StructurallySame.java : Two binary trees are structurally identical : 
+	if(root1==null && root2==null) {
+			return true;
+		}else if(root1==null || root2==null) {
+			return false;
+		}else if(isLeaf(root1) && isLeaf(root2)) {
+			return true;
+		}else if(isLeaf(root1) || isLeaf(root2)) {
+			return false;
+		}else {
+			boolean left = isSame(root1.left,root2.left);
+			boolean right = isSame(root1.right,root2.right);
+			return left && right;
+		}
+
+17. DiameterOfTheTree.java : Diameter of the tree : the longest path between leaves. Either through root or without it. IMPORTANT
+
+18. Maximum width of a binary tree
+	Use level order traversal and count the max in each level.
+
+19. Max sum in a level.
+	Use level order traversal. Similar to width, instead of incrementing count, we add the numbers in that level. Assuming the data is int.
+
+20. Find the path with max sum. Again data of the BTNode is positive and negative integers. IMPORTANT.
+							10
+						 /	   \
+					   2	    10
+					/   \	   	  \				
+				  20	 1        -25
+				  				 /  \
+				  				3    4
+
+21. Print all paths from root to leaf nodes
+	void printPaths(BTNode node, Deque<BTNode> q){
+		if(node==null){
+			//do nothing
+		}else if(isLeaf(node)){ // we print paths now
+			q.addRear(node);
+			printQueueContents(q);
+			q.removeRear();
+		}else{
+			q.addRear(node);
+			printPaths(node.left,q);
+			printPaths(node.right,q);
+			q.removeRear();
+		}
+	}
+
+22. Check for the existing of a path sum in binary tree
+	boolean checkSum(BTNode node, int sum){
+		if(node == null)return false;
+
+		if(isLeaf(node)) return node.data == sum;
+
+		return checkSum(node.left, sum-node.data) || checkSum(node.right, sum-node.data); 
+	}
+
+23. convert a tree to its mirror
+	void mirror(BTNode node){
+		if(node == null || isLeaf(node)){
+			return; // can't really mirror no node or leaf node
+		}else{
+			mirror(node.left);
+			mirror(node.right);
+			BTNode temp = node.left;
+			node.left = node.right;
+			node.right = temp;
+		}
+	}
+
+24. Check if 2 nodes are mirrors of one another.
+	boolean checkIfMirror(BTNode node1, BTNode node2){
+		if(node1 == null && node2 == null){
+			return true;
+		}else if(node1 == null || node2 == null){ // only one of them is null. so structurally different. not mirrors
+			return false;
+		}else if(isLeaf(node1) && isLeaf(node2)){ // if both are leaf nodes, their contents need to be same. Assuming we are already mirrored these nodes
+			return node1.data == node2.data;
+		}else if(isLeaf(node1) || isLeaf(node2)){ //only one of them is leaf. structurally different
+			return false;
+		}else{
+			return node1.data == node2.data && checkIfMirror(node1.left,node2.right) && checkIfMirror(node1.right,node2.left);
+		}
+	}
+
+25. Construct binary tree from inorder and preorder traversals
+	Inorder 	DBEAFC
+	preOrder 	ABDEFC
+	pseudocode for INORDER + PREORDER combination.
+	
+	constructBinaryTree(prefix, preStart, preEnd, infix, inStart,inEnd){
+
+	Starting condition :
+	preStart = 0
+	preEnd = length-1
+	inStart = 0
+	inEnd
+
+	Construct node:
+	BTNode node = new BTNode(prefix.charAt(preStart));
+
+	find the index of char At prefix[prestart] in infix
+	int offset = preStart;
+	for(; offset<preEnd;offset++){
+		if(prefix.charAt(preStart) == infix.charAt(offset)){
+			break;
+		}
+	}
+	IMPORTANT. Just look and compare the infox and prefix expressions. you can deduce the indexes below.
+	node.left = constructBinaryTree(prefix, prestart+1,preStart+offset-inStart, infix, inStart, offset-1);
+	node.right = constructBinaryTree(prefix, preStart+offset+1,preEnd, infix, offset+1, inEnd);
+
+	}

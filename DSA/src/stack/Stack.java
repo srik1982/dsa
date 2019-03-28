@@ -1,7 +1,5 @@
 package stack;
 
-import java.util.ArrayList;
-
 public class Stack<E extends Object> {
 	private final int size = 10;
 	private Object[] stack = new Object[size];
