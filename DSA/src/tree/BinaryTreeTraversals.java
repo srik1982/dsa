@@ -12,7 +12,9 @@ public class BinaryTreeTraversals {
 	public static void main(String args[]) {
 		BinaryTreeTraversals o = new BinaryTreeTraversals();
 		BTNode root = o.createBinaryTree();
-		o.levelOrder(root);
+		o.inOrder(root);
+		System.out.println();
+		o.postOrder(root);
 //		System.out.println();
 //		o.preOrderIterative(root);
 	}

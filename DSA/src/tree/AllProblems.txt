@@ -317,7 +317,7 @@
 		}
 	}
 
-25. Construct binary tree from inorder and preorder traversals
+25. Construct binary tree from inorder and preorder traversals. DIFFICULT
 	Inorder 	DBEAFC
 	preOrder 	ABDEFC
 	pseudocode for INORDER + PREORDER combination.
@@ -344,4 +344,140 @@
 	node.left = constructBinaryTree(prefix, prestart+1,preStart+offset-inStart, infix, inStart, offset-1);
 	node.right = constructBinaryTree(prefix, preStart+offset+1,preEnd, infix, offset+1, inEnd);
 
+	}
+
+26. Construct binary tree from inorder and postorder traversals. DIFFICULT.
+	Inorder :   4 2 5 1 6 3 7 
+	PostOrder : 4 5 2 6 7 3 1
+
+	public BTNode constructBinaryTree(int[] postOrder, int postStart, int postEnd, int[] inorder, int inStart, int inEnd){
+		if(postStart > postEnd || inStart > inEnd){
+			return null;
+		}
+		int val = postOrder[postEnd];
+		BTNode node = new BTNode(val);
+		int offset = inStart;
+		for(;offset < inEnd; offset++){
+			if(inorder[offset] == val){
+				break;
+			}
+		}
+
+		node.left = constructBinaryTree(postOrder, postStart, postStart+offset-1-inStart, inorder, instart, offset-1);
+		node.right = constructBinaryTree(postOrder, postStart+offset-instart, postEnd-1, inorder, offset+1, inEnd);
+	}
+
+27. All anscestors of a given node
+	Use recursion and print after call
+
+28. LCA of 2 nodes : LCA.java
+	
+29. Vertical Sum in Binary Tree. Related question: Print the tree in vertical order
+							10
+						 /	   \
+					   2	    10
+					/   \	   	  \				
+				  20	 1        -25
+				  				 /  \
+				  				3    4
+	Root is at column 0. Everytime we go right, column number increases, Everytime we go left, column number decreases.
+	By this logic, 10 and 1 have the same column number because we took one left and then one right.
+	Use a HashMap<Column_number, Sum>. For each node, get the existing value and add the value of this node.
+	Of course the output won't be sorted.
+
+30. How many different binary trees are possible with n nodes : 2^n - n
+
+31. CreateTreeFromPreorder.java : Create tree given preorder traversal of the form I L I L L where I indicates inner node and L indicates leaf node.
+
+32. Given a binary tree with three pointers (left, right and nextSibling), give an algorithm for filling the nextSibling pointers assuming they are NULL initially.
+	Solution1 : Use level order traversal to fill
+	Solution2 : Use recursion. Before you call the method on child nodes, set 
+	   a. node.left.sibling = node.right
+	   b. node.right.sibling = node.sibling.left
+
+33. BoundaryTraversal.java : raverse the boundary nodes in anti-clockwise
+
+34. Top view of a tree : http://javabypatel.blogspot.com/2015/10/print-nodes-visible-from-top-view-binary-tree.html
+	Similar to the Vertical sum, vertical order. Except here, if a column already has a value, dont replace it or add.
+	Done using a level order traversal.
+
+35. Bottom View of Binary Tree
+	This is part of the solution to #33. Use preorder and print only the leaf nodes
+
+36. Given a binary tree and a array of numbers. Check if the aray represents preorder traversal.
+	do pre-order traversal and keep incrementing index. At any point if the value at index and node data are different, return false.
+
+37. Print Nodes at K distance from Root in Binary Tree.
+	Use level order traversal and don't print anyhing before and after level k. Keep incrementing the level when you encounter null.
+
+38. Given a tree and 2 nodes. Check if the two nodes are cousins. i.e., they belong to different parents but on the same level.
+	There are 2 apscts to be returned here. So it gets a little complex if we think if a single recursive method.
+	1. Level info - whether both are in the same level or not
+	2. If nodes are part of same parent or not.
+
+	boolean areCousins(BTNode root, int data1, int data2){
+		1. Use level order traversal for  data1 and data2 separately and find their levels. let their levels be level11 and level2 respectively.
+		if( (level1==-1 || level2==-1) || level1 != level2){
+			return false;
+		}
+
+		2. recursively find if both data1 and data2 belong to the left child right child or a node
+
+	}
+
+39. Remove nodes from root to leaf if the length of the path < K. Except if the node is shared with another path.
+	
+	BTNode removeNodes(BTNode node, int i, int k){ // initial value of i=1
+		if(i>k && node!=null && !isLeaf(node)) return node; // nothing to delete in this path
+
+		if(i<=k && isLeaf(node)){ //delete this node by returning null to parent
+			return null
+		}
+
+		node.left = removeNodes(node.left, i+1,k);
+		node.right = removeNodes(node.right,i+1,k);
+
+		if(node.left==null && node.right == null){
+			return null;
+		}
+		return node;
+	}
+
+40. Check if one tree is subtree of another tree. We don't know which is the smaller tree here.
+	boolean isSubtree(BTNode root1, BTNode root2){
+		boolean subtree = checkIfSubtree(root1,root2);
+		if(!subtree){
+			subtree = checkIfSubtree(root,root2);
+		}
+		return subtree;
+	}
+
+	boolean checkIfSubtree(BTNode stNode, BTNode btNode){ // stNode->small tree node, btNode->big tree node
+		if(stNode == null || btNode==null) 
+			return false;
+		if(stNode.data == btNode.data){
+			return areSameTrees(stNode,btNode);
+		}else{
+			boolean subTree = checkIfSubTree(stNode,btNode.left);
+			if(!subTree){
+				subTree = checkIfSubTree(stNode,btNode.right);
+			}
+			return subTree;
+		}
+
+	}
+
+	boolean are sameTrees(BTNode node1, BTNode node2){
+		if(node1== null && node2 == null){
+			return true;
+		} else if(node1==null || node null){
+			return false;
+		} else if(isLeaf(node1) && isLeaf(node2)){
+			return node1.data == node2.data;
+		} else if(isLead(node1) || isLeaf(node2)){
+			return false;
+		}
+		else{
+			return sameTrees(node1.left,node2.left) && sameTrees(node1.right,node2.right);
+		}
 	}

@@ -1,0 +1,4 @@
+1. Basics of Microservices
+2. Caching design
+3. Rules Engine - how typical rules engine works. how QueryExpression works using Lambda
+4. Database concepts like sharding, consistent read etc
