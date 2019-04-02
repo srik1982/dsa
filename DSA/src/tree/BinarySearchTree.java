@@ -74,7 +74,7 @@ public class BinarySearchTree {
 	}
 	
 	public void delete(int data) {
-		delete(root,data);
+		root = delete(root,data);
 	}
 
 	private BTNode delete(BTNode node, int data) {

@@ -8,6 +8,9 @@ public class TreeUtil {
 	public static boolean isLeaf(BTNode root) {		
 		return root!=null && root.left==null && root.right==null;
 	}
+	public static boolean isLeaf(AVLNode root) {		
+		return root!=null && root.left==null && root.right==null;
+	}
 	
 	public static BTNode createBinaryTree() {
 		BTNode root = new BTNode(1);
