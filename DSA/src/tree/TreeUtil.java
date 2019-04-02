@@ -22,4 +22,18 @@ public class TreeUtil {
 		
 		return root;
 	}
+	
+	public static BTNode createBST() {
+		BinarySearchTree bst = new BinarySearchTree();
+		bst.insert(8);
+		bst.insert(4);
+		bst.insert(6);		
+		bst.insert(2);
+		bst.insert(12);
+		bst.insert(10);
+		bst.insert(14);
+		bst.insert(13);
+		bst.insert(15);
+		return bst.getRoot();
+	}
 }

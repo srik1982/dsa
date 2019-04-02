@@ -481,3 +481,149 @@
 			return sameTrees(node1.left,node2.left) && sameTrees(node1.right,node2.right);
 		}
 	}
+
+NOTE: I could not find any interview questions related to threaded and xor trees. at least not in the top 10/25. So in the interest of time, i am omitting them here.
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  BINARY SEARCH TREES   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+41. BinarySearchTree.java : Basic BST operations
+
+42. LCAofBST.java : LCA of BST is different from the normal tree as the data is not random
+
+43. Check whether a tree is BST or not
+
+	boolean isBST(BTNode node){
+		if(node == null)return false; // there is no tree, so obviously no BST
+
+		if(isLeaf(node)){
+			return true; // single node can be bst
+		} else if(node.left!=null && node.right!=null){
+			 if(node.data > node.left.data && node.data < node.right.data){
+			 	return isBST(node.left) && isBST(node.right);
+			 }
+		}else if(node.left!=null){
+			if(node.data > node.left.data){
+			 	return isBST(node.left);
+			 }	
+		}else{
+			if(node.data < node.right.data){
+			 	return isBST(node.right);
+			 }
+		}
+	}
+	OOPS, this is wrong approach. Because it checks only for parent-child data. but entire left subtree data should be less than the root. inverse for right subtree.
+	Since inorder traversal or BST produces a sorted list, we can check if each node's data is > previous node data
+	
+	int prevData = Integer.MIN_VALUE;
+	boolean bst = true;
+	void isBST(BTNode node){
+		if(node!=null && bst){
+			isBST(node.left);
+			if(node.data < prev){
+				bst = false;
+			}else{
+				prev = node.data;
+			}
+			isBST(node.right);
+		}
+	}
+
+	i should not be using global data in java. But could not figure out better solution. Slightly difficult with recursion, use iterative approach with stack.
+
+44. Convert BST to a Circular DLL in O(1) space
+	you would definitely need stack space for either iteration or recursion. SO i guess, that can't be considered extra space.
+	Check BST2DLL.java
+
+45. Sorted DLL to BST
+	BTNode constructTree(BTNode head){
+		int len = 0;
+		BTNode node = head;
+		while(node!=null){
+			node = node.right;
+			len++;
+		}
+		return constructTree(head,0,len);
+	}
+	BTNode constructNode(BTNode node, int start, int end){
+		if(start<end){
+			BTNode n = node;
+			for(int i=start;i<(end+start)/2;i++){
+				n = node.right;
+			}
+			BTNode mid = n;
+			mid.left = constructNode(node, start,mid-1);
+			mid.right = constructNode(node,mid+1,end);
+
+			return mid;
+		}
+		return null;
+	}
+
+	Since we divide the problem into 2 halfs and each time iterate through the nodes, T(n) = 2T(n/2) + O(n)
+	Need to use Master theorem to evaluate this. This comes to O(n*logn).
+	Alternatively, we can think like this. Since we are diving the problem by half, there are at most logn calls. At each level we make upto n/2 iterations so n/2 * logn => O(n*logn)
+
+46. Given a sorted array ( instead of DLL), convert it into BST
+	BTNode constructTree(int[] sortedArr){
+		int len = sortedArr.length;
+		return constructTree(sortedArr,0,len);
+	}
+	BTNode constructNode(int[] a, int start, int end){
+		if(start<end){
+			int mid = (start+end)/2;
+			BTNode n = new BTNode(a[(mid)]);
+			
+			n.left = constructNode(node, start,mid-1);
+			n.right = constructNode(node,mid+1,end);
+
+			return n;
+		}
+		return null;
+	}
+
+	Time and space complexity is O(n) since we already know the indices here.
+
+47. Singly Linked List to BST. 
+	Similar to 45, but we can't reuse a Singly Linked list Node, we need to create a BTNode obj for each element.
+
+48. Kth smallest element in a BST
+	Use inorder traversal and use a counter. Stop and return at counter == k.
+
+49. Floor and Ceil. Given a BST with elements 1, 2, 8, 10, 10, 12, 19
+	Floor of 5 = 2
+	Ceil of 5  = 8
+
+	class FandL{
+		int floor = Integer.MAX_VALUE;
+		int ceil = Integer.MIN_VALUE;
+	}
+
+	void getFloorAndCeil(BTNode root, int key, FandL fl){
+		if(root!=null){
+			if(key < root.data){
+				fl.ceil = root.data;
+				getFloorAndCeil(root.left,ket,fl);
+			}else if(key > root.data){
+				fl.floor = root.data;
+				getFloorAndCeil(root.right,key,fl);
+			}else{
+				return;
+			}
+		}
+	}
+
+50. Given a BST and two numbers K1 and K2, give an algorithm for printing all the elements of BST in the range K1 and K2
+	Use inorder recursive traversal. Print only if the value is between K1 and K2.
+
+51. Given two BSTs such that their nodes are arranged differently. check if both trees are same.
+	i.e., verify they contain the same elements (and implicitly, they produce the same inorder traversal).
+	Solution 1:
+	Do inorder traversal on the first BST and then the second BST. Times O(m) and O(n)
+	if(m!=n)return false.
+	else, loop over the elements one by one and compare.
+
+	Solution 2: 
+	do inorder traversal of both at the same time.
+	The place where you have sysout, put a if check and verify both elements are same.
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Balanced BSTs    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
