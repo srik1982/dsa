@@ -1,6 +1,6 @@
-package dynamic.v1;
+package dynamic.v2;
 
-public class MaxSubArrayDP {
+public class MaxOfContigiousElements {
 	static int maxSubArraySum(int a[], int size) {
 		int max_so_far = a[0];
 		int curr_max = a[0];

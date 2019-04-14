@@ -626,4 +626,49 @@ NOTE: I could not find any interview questions related to threaded and xor trees
 	do inorder traversal of both at the same time.
 	The place where you have sysout, put a if check and verify both elements are same.
 
+52. Given a range of numbers, prune all nodes not in the range
+	Use post order because here we first visit the child nodes and then the parent node.
+	
+	BTNode prune(BTNode root, int start, int end){
+		if(node!=null){
+			root.left = prune(root.left,start,end);
+			root.right = prune(root.right,start,end);
+
+			if(root.data<start){ // means this value is small, so return right subtree which has elements > root.data
+				return root.right;	//this can even be null
+			}else if(root.data>start){ // means this value is large, so return left subtree which has elements < root.data
+				return root.left;	//this can even be null
+			}else{
+				return root;
+			}
+		}
+		return null;
+	}
+
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Balanced BSTs    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+1. How many AVL trees are possible for height 6. Number of possible AVL trees follows a fibonacci pattern
+	N(h) = N(h-1) + N(h-2) + 2
+	If we consider single node as height 1, then N(1) = 1. This is our starting point of sequence.
+	N(2) = 2. Because we consider bf = |1| in all cases not bf of -1,0,1. if we consider BF 0, then N(2) = 3.
+	N(3) = N(2) + N(1) + 1 = 2 + 1 + 1 = 4
+	Using this recursive formula, we can conpute the number of trees possible for any level.
+
+2. Max height of AVL Tree is 1.44 * Log(n)
+
+3. AVLTree.java : insert and delete implementations. Search is same as for BST. Of course balancing logic.
+
+4. The rotation operations in AVl node take a constant amount of time. As such the time complexity of the operations are 
+	1. Insert : O(logn) => log n number of comparisons before deciding where to insert
+	2. search : O(logn)
+	3. Delete : O(logn)
+
+
+5. Red-Black Trees take less memory - just 1 bit for color and offer comparatively better performance than AVL.
+	1. Insert : O(logn)
+	2. search : O(logn)
+	3. Delete : O(logn)
+
+	Used in SortedTreeMap in java. Not going into too many details here. I don't think its important to write code for red-black trees from interview perspective.
+
+6. 

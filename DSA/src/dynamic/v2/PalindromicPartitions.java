@@ -63,8 +63,9 @@ public class PalindromicPartitions {
 					int x = 1 + partitions[i][j-1];
 					int y = 1 + partitions[i+1][j];
 					//this one is 2 chars on either sides. Since they are built using the smaller strings, we don't have to iterate/recurse till we have 1 char
-					int z = 1 + partitions[i][j-2] + partitions[i+2][j];
-					partitions[i][j] = Math.min(Math.min(x, y), z);
+//					int z = 1 + partitions[i][j-2] + partitions[i+2][j];
+//					partitions[i][j] = Math.min(Math.min(x, y), z);
+					partitions[i][j] = Math.min(x, y);
 				}
 			}
 		}

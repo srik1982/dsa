@@ -7,9 +7,9 @@ public class LongestCommonSubsequence {
 
 	public static void main(String[] args) {
 		LongestCommonSubsequence lcs = new LongestCommonSubsequence();
-	    System.out.println(lcs.getLCSDP("abdca", "cbda"));
-	    System.out.println(lcs.getLCSDP("passport", "ppsspt"));
-
+	    System.out.println(lcs.getLCS("abdca", "cbda"));
+	    System.out.println(lcs.getLCS("passport", "ppsspt"));
+	    System.out.println(lcs.getLCS("florescense", "florence"));
 	}
 	
 	public int getLCSBF(String text1, String text2) {
@@ -60,7 +60,7 @@ public class LongestCommonSubsequence {
 	
 	public int getLCSDP(String text1, String text2) {
 		if(text1.length() == 0 || text2.length() == 0)return 0;
-		
+		 
 		int[][] dp = new int[text1.length()+1][text2.length()+1];
 		
 		for(int i=1;i<=text1.length();i++) {
@@ -74,5 +74,21 @@ public class LongestCommonSubsequence {
 		}
 		return dp[text1.length()][text2.length()];
 	}
+	/*
+	 * O(2 ^ m+n )
+	 */
+	public static int getLCS(String text1, String text2) {
+		return getLCS(text1,0,text2,0,0);
+	}
 
+	private static int getLCS(String text1, int i, String text2, int j, int count) {
+		if(i==text1.length() || j == text2.length()) return count;
+		int c1 = 0, c2 = 0, c3 = 0; 
+		if(text1.charAt(i) == text2.charAt(j)) { 
+			c1 = getLCS(text1,i+1, text2, j+1,count+1); 
+		} 
+		c2 = getLCS(text1, i, text2, j+1,count); 
+		c3 =getLCS(text1, i+1, text2, j,count); 
+		return Math.max(c1, Math.max(c2, c3)); 
+	}
 }

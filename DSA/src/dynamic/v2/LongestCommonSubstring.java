@@ -9,9 +9,9 @@ import java.util.OptionalInt;
 public class LongestCommonSubstring {
 
 	public static void main(String[] args) {
-//		System.out.println(getLCSDP2("abcd","pqr"));
-//		System.out.println(getLCSDP2("abcd","b"));
-		System.out.println(getLCSDP2("abcd","acdhbc"));
+		System.out.println(getLCS("abcd","pqr"));
+		System.out.println(getLCS("abcd","b"));
+		System.out.println(getLCS("abcd","acdhbc"));
 	}
 	/*
 	 * O(2 ^ m+n )
@@ -30,6 +30,7 @@ public class LongestCommonSubstring {
 		c3 =getLCS(text1, i+1, text2, j,0); 
 		return Math.max(c1, Math.max(c2, c3)); 
 	}
+    
 	
 	/*
 	 * There is a small problem with this implementation. this may be suitable for Longest Common Subsequence

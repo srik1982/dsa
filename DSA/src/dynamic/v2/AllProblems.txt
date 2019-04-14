@@ -1,78 +1,115 @@
 Solved Problems
 ----------------------------------------------------------------------------------------------------------------
-Some problems are more complex than others. So we need to go through these problems in a particular order.
-I am using this format - each program is given a number in multiples of 10. sometimes we write more than 1 class for the same problem.
-So, if knapsack is 10, KnapsacklessSpace will be 11. CountingCoins will be 20 and so on. 
 
-010. Knapsack.java : brute force and DP ( 2d array) solutions
+1. Knapsack.java : brute force and DP ( 2d array) solutions
 
-011. KnapsackLessSpace.java : space optimal solution which uses a 1d array instead of 2d array
+1.1. KnapsackLessSpace.java : space optimal solution which uses a 1d array instead of 2d array
 
-020. PartitionSet.java : partition into 2 subsets whose sum is equal
+2. PartitionSet.java : partition into 2 subsets whose sum is equal
 
-030. SubsetSum.java : Given a set of positive numbers, determine if there exists a subset whose sum is equal to a given number
+3. SubsetSum.java : Given a set of positive numbers, determine if there exists a subset whose sum is equal to a given number
 
-040. MinDiffSubSets.java : Given a set of positive numbers, partition the set into two subsets with a minimum difference between their subset sums.
+4. MinDiffSubSets.java : Given a set of positive numbers, partition the set into two subsets with a minimum difference between their subset sums.
 
-050. CountOfSubSets.java : Given a set of positive numbers, find the total number of subsets whose sum is equal to a given number ‘S’.
+5. CountOfSubSets.java : Given a set of positive numbers, find the total number of subsets whose sum is equal to a given number ‘S’.
 
-060. TargetSum.java : Given a set of positive numbers and a target sum ‘S’. Each number should be assigned either a ‘+’ or ‘-’ sign. We need to find out total ways to assign symbols to make the sum of numbers equal to target ‘S’.
+6. TargetSum.java : Given a set of positive numbers and a target sum ‘S’. Each number should be assigned either a ‘+’ or ‘-’ sign. We need to find out total ways to assign symbols to make the sum of numbers equal to target ‘S’.
 
-070. UnboundedKnapsack.java : Same as knapsack, that we need to maximize profit. But we can use the same weight any number of times.
+7. UnboundedKnapsack.java : Same as knapsack, that we need to maximize profit. But we can use the same weight any number of times.
 
-080. CountingCoins.java : Given an infinite supply of ‘n’ coin denominations and a total money amount, we are asked to find the total number of distinct ways to make up that amount.
+8. CountingCoins.java : Given an infinite supply of ‘n’ coin denominations and a total money amount, we are asked to find the total number of distinct ways to make up that amount.
 
-090. MinCoinsCount.java : Given an infinite supply of ‘n’ coin denominations and a total money amount, we are asked to find the MINIMUM number of coins needed to make up that amount.
+9. MinCoinsCount.java : Given an infinite supply of ‘n’ coin denominations and a total money amount, we are asked to find the MINIMUM number of coins needed to make up that amount.
 
-100. MaxRibbonsCut.java : We are given a ribbon of length n and a set of possible ribbon lengths. Now we need to cut the ribbon into the maximum number of pieces
+10. MaxRibbonsCut.java : We are given a ribbon of length n and a set of possible ribbon lengths. Now we need to cut the ribbon into the maximum number of pieces
 
-110. Fibonacci.java
+11. Fibonacci.java
 
-120. StairCase.java : Given a stair with â€˜nâ€™ steps, implement a method to count how many possible ways are there to reach the top of the staircase, given that, at every step you can either take 1 step, 2 steps, or 3 steps.
+12. StairCase.java : Given a stair with â€˜nâ€™ steps, implement a method to count how many possible ways are there to reach the top of the staircase, given that, at every step you can either take 1 step, 2 steps, or 3 steps.
 
-130. NumberFactors.java : Given a number ‘n’, implement a method to count how many possible ways there are to express ‘n’ as the sum of 1, 3, or 4.
+13. NumberFactors.java : Given a number ‘n’, implement a method to count how many possible ways there are to express ‘n’ as the sum of 1, 3, or 4.
 
-140. CountMinJumps.java : Given an array of positive numbers, where each element represents the max number of jumps that can be made forward from that element, write a program to find the minimum number of jumps needed to reach the end of the array
+14. CountMinJumps.java : Given an array of positive numbers, where each element represents the max number of jumps that can be made forward from that element, write a program to find the minimum number of jumps needed to reach the end of the array
 
-150. CountMinFeeJumps.java : At every step you have the option to take 1,2 or 3 steps. And there is a fee/price to pay if you land at a particular step. Find minimum fees to pay.
+15. CountMinFeeJumps.java : At every step you have the option to take 1,2 or 3 steps. And there is a fee/price to pay if you land at a particular step. Find minimum fees to pay.
 
-160. HouseThief.java : Given a number array representing the wealth of n houses, determine the maximum amount of money the thief can steal without alerting the security system.
+16. HouseThief.java : Given a number array representing the wealth of n houses, determine the maximum amount of money the thief can steal without alerting the security system.
+	||| to 330 Max of contigious elements, only here, its non contigious.
+17. PalindromSubsequence.java : Longest Common subsequence
 
-170. PalindromSubsequence.java : Longest Common subsequence
+18. PalindromicSubstring.java : Longest common substring
 
-180. PalindromicSubstring.java : Longest common substring
+19. CountOfPalindromicSubstrings.java : Just an extention of Palindromic Substrings (180)
 
-190. CountOfPalindromicSubstrings.java : Just an extention of Palindromic Substrings (180)
-
-200. Tiling a plot
+20. Tiling a plot
 This is exactly same as fibonacci series. So not writing a code here. Refer this link to understand the problem
 https://www.geeksforgeeks.org/tiling-problem/
 
-210. WaysToScore.java : ways to score runs. based on permutations. Solved used recursion and DP
+21. WaysToScore.java : ways to score runs. based on permutations. Solved used recursion and DP
 
-220. PalindromicPartitions.java : Given a string, we want to cut it into pieces such that each piece is a palindrome. Write a function to return the minimum number of cuts needed.
+22. PalindromicPartitions.java : Given a string, we want to cut it into pieces such that each piece is a palindrome. Write a function to return the minimum number of cuts needed.
 
-230. LongestCommonSubstring.java : Given two strings ‘s1’ and ‘s2’, find the length of the longest substring which is common in both the strings
+23. LongestCommonSubstring.java : Given two strings ‘s1’ and ‘s2’, find the length of the longest substring which is common in both the strings
 
-240. LongestCommonSubsequence.java : Given two strings ‘s1’ and ‘s2’, find the length of the longest subsequence which is common in both the strings
+24. LongestCommonSubsequence.java : Given two strings ‘s1’ and ‘s2’, find the length of the longest subsequence which is common in both the strings
 
-250. MinDeletionsInsertions.java : Given strings s1 and s2, we need to transform s1 into s2 by deleting and inserting characters. Write a function to calculate the count of the minimum number of deletion and insertion operations.
+25. MinDeletionsInsertions.java : Given strings s1 and s2, we need to transform s1 into s2 by deleting and inserting characters. Write a function to calculate the count of the minimum number of deletion and insertion operations.
 
-260. LongestIncreasingSubsequence.java: Given a number sequence, find the length of its Longest Increasing Subsequence (LIS). In an increasing subsequence, all the elements are in increasing order (from lowest to highest).
+26. LongestIncreasingSubsequence.java: Given a number sequence, find the length of its Longest Increasing Subsequence (LIS). In an increasing subsequence, all the elements are in increasing order (from lowest to highest).
 
-270. MaxSumIncreasingSubsequence.java: Given an array of n positive integers. Write a program to find the sum of maximum sum subsequence of the given array such that the integers in the subsequence are in increasing order.
+27. MaxSumIncreasingSubsequence.java: Given an array of n positive integers. Write a program to find the sum of maximum sum subsequence of the given array such that the integers in the subsequence are in increasing order.
 
-280. MinLengthSuperSequence.java : Given two sequences ‘s1’ and ‘s2’, write a method to find the length of the shortest sequence which has ‘s1’ and ‘s2’ as subsequences
+28. MinLengthSuperSequence.java : Given two sequences ‘s1’ and ‘s2’, write a method to find the length of the shortest sequence which has ‘s1’ and ‘s2’ as subsequences
 
-290. MinDeletionsToSort.java : Given an integer array, find the minimum deletions to be made so that the array becomes sorted.
+29. MinDeletionsToSort.java : Given an integer array, find the minimum deletions to be made so that the array becomes sorted.
 
-300. LongestRepeatingSubsequence.java : Given a sequence, find the length of its longest repeating subsequence (LRS). A repeating subsequence will be the one that appears at least twice in the original sequence and is not overlapping (i.e. none of * the  corresponding characters in the repeating subsequences have the same index).
+30. LongestRepeatingSubsequence.java : Given a sequence, find the length of its longest repeating subsequence (LRS). A repeating subsequence will be the one that appears at least twice in the original sequence and is not overlapping (i.e. none of * the  corresponding characters in the repeating subsequences have the same index).
 
-310. SubsequencePatternMatching.java : Given a string and a pattern, write a method to count the number of times the pattern appears in the string as a subsequence.
+31. SubsequencePatternMatching.java : Given a string and a pattern, write a method to count the number of times the pattern appears in the string as a subsequence.
 
-320. LongestBitonicSubsequence.java : Given a number sequence, find the length of its Longest Bitonic Subsequence (LBS). A subsequence is considered bitonic if it is monotonically increasing and then monotonically decreasing.
+32. LongestBitonicSubsequence.java : Given a number sequence, find the length of its Longest Bitonic Subsequence (LBS). A subsequence is considered bitonic if it is monotonically increasing and then monotonically decreasing.
 
-330. 
+33. MaxOfContigiousElements.java : Contigious elements with maximum sum
+
+34. Catalan numbers: if there are n nodes, how many trees can be formed using them?
+if we select ith node as a root. then we have (i-1) nodes are the left subtree and (n-i) for the right subtree.
+so the number of trees possible is 
+ n
+Sigma (i-1) * (n-i)
+i=1
+
+This is the recursive formula.
+
+int catalan(int n){
+	if(n==0) return 0;
+	if(n==1) return 1;
+	if(n==2) return 2;
+
+	int sum = 0;
+	for(int i=1;i<=n;i++){
+		sum += catalan(i-1) * catalan(n-i);
+	}
+}
+Exponential time complexity. use a 1D array to store previous results, this becomes O(n).
+
+35. MatrixChainMultiplication.java
+
+36. BoxStacking.java : Given boxes' length, width and height. Also you can use any number of boxes of a type by rotating it in 3 dimensions. We have to find the maximum height reachable with the onstraint that the below below should have an area bigger than the above one.
+
+37. Consider a very long, straight river which moves from north to south. Assume there are n cities on both sides of the river: n cities on the left of the river and n cities on the right side of the river. Also, assume that these cities are numbered from 1 to n but the order is not known. Now we want to connect as many leftright pairs of cities as possible with bridges such that no two bridges cross. When connecting cities, we can only connect city i on the left side to city i on the right side
+
+If one side is sorted, then we need to find the Longest Increasing subsequence on the other side. then connect them.
+
+38. Tiling: Assume that we use dominoes measuring 2 × 1 to tile an infinite strip of height 2. How many ways can one tile a 2 × n strip of square cells with 1 × 2 dominoes?
+	This can be converted to a fibonacci pattern.
+	for 2x1 : 1 way
+	for 2x2 : 2 ways
+	for 2x3 : 3 ways
+	for 2x4 : 5 ways.
+
+	follows fibonacci pattern.
+
+39. 
 ================================================================================================================
 Solutions Unknown
 -----------------------------------------------------------------------------------------------------------------

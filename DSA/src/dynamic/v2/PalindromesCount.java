@@ -26,9 +26,14 @@ public class PalindromesCount {
 		System.out.println(cps.findCPS("abdbca"));
 		System.out.println(cps.findCPS("cdpdd"));
 		System.out.println(cps.findCPS("pqr"));
+		System.out.println();
+		System.out.println(cps.findCPS2("abdbca"));
+		System.out.println(cps.findCPS2("cdpdd"));
+		System.out.println(cps.findCPS2("pqr"));
 	}
 
 }
+
 
 class CPS {
 
@@ -58,5 +63,33 @@ class CPS {
 
 		return count;
 	}
-
+	
+	/*
+	 * This one is directly based on palindromic substring. So easy to remember.
+	 */
+	public int findCPS2(String text) {
+		int n = text.length();
+		int[][] dp = new int[n][n];
+		int count = 0;
+		
+		for(int i=0;i<n;i++) {
+			dp[i][i] = 1;
+			count++;
+		}
+		
+		for(int i=n-2;i>=0;i--) {
+			for(int j=i+1;j<n;j++) {
+				int len = j-i+1;
+				//the second condition maps directly to the Top Down solution.
+				if(text.charAt(i) == text.charAt(j) && dp[i+1][j-1] == len-2) {
+					dp[i][j] = dp[i+1][j-1]+2;
+					count++;
+				}else {
+					dp[i][j] = Math.max(dp[i][j-1], dp[i+1][j]);
+				}
+			}
+		}
+		
+		return count;
+	}
 }

@@ -25,9 +25,9 @@ public class LongestRepeatingSubsequence {
 
 	public static void main(String[] args) {
 		LongestRepeatingSubsequence lrs = new LongestRepeatingSubsequence();
-	    System.out.println(lrs.findLRS_DP("tomorrow"));
-	    System.out.println(lrs.findLRS_DP("aabdbcec"));
-	    System.out.println(lrs.findLRS_DP("fmff"));
+	    System.out.println(lrs.findLRS("tomorrow"));
+	    System.out.println(lrs.findLRS("aabdbcec"));
+	    System.out.println(lrs.findLRS("fmff"));
 	}
 	
 	public int findLRS(String seq) {
