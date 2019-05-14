@@ -11,23 +11,23 @@ Solved Problems
 
 4. MinDiffSubSets.java : Given a set of positive numbers, partition the set into two subsets with a minimum difference between their subset sums.
 
-5. CountOfSubSets.java : Given a set of positive numbers, find the total number of subsets whose sum is equal to a given number â€˜Sâ€™.
+5. CountOfSubSets.java : Given a set of positive numbers, find the total number of subsets whose sum is equal to a given number ‘S’.
 
-6. TargetSum.java : Given a set of positive numbers and a target sum â€˜Sâ€™. Each number should be assigned either a â€˜+â€™ or â€˜-â€™ sign. We need to find out total ways to assign symbols to make the sum of numbers equal to target â€˜Sâ€™.
+6. TargetSum.java : Given a set of positive numbers and a target sum ‘S’. Each number should be assigned either a ‘+’ or ‘-’ sign. We need to find out total ways to assign symbols to make the sum of numbers equal to target ‘S’.
 
 7. UnboundedKnapsack.java : Same as knapsack, that we need to maximize profit. But we can use the same weight any number of times.
 
-8. CountingCoins.java : Given an infinite supply of â€˜nâ€™ coin denominations and a total money amount, we are asked to find the total number of distinct ways to make up that amount.
+8. CountingCoins.java : Given an infinite supply of ‘n’ coin denominations and a total money amount, we are asked to find the total number of distinct ways to make up that amount.
 
-9. MinCoinsCount.java : Given an infinite supply of â€˜nâ€™ coin denominations and a total money amount, we are asked to find the MINIMUM number of coins needed to make up that amount.
+9. MinCoinsCount.java : Given an infinite supply of ‘n’ coin denominations and a total money amount, we are asked to find the MINIMUM number of coins needed to make up that amount.
 
 10. MaxRibbonsCut.java : We are given a ribbon of length n and a set of possible ribbon lengths. Now we need to cut the ribbon into the maximum number of pieces
 
 11. Fibonacci.java
 
-12. StairCase.java : Given a stair with Ã¢â‚¬ËœnÃ¢â‚¬â„¢ steps, implement a method to count how many possible ways are there to reach the top of the staircase, given that, at every step you can either take 1 step, 2 steps, or 3 steps.
+12. StairCase.java : Given a stair with â€˜nâ€™ steps, implement a method to count how many possible ways are there to reach the top of the staircase, given that, at every step you can either take 1 step, 2 steps, or 3 steps.
 
-13. NumberFactors.java : Given a number â€˜nâ€™, implement a method to count how many possible ways there are to express â€˜nâ€™ as the sum of 1, 3, or 4.
+13. NumberFactors.java : Given a number ‘n’, implement a method to count how many possible ways there are to express ‘n’ as the sum of 1, 3, or 4.
 
 14. CountMinJumps.java : Given an array of positive numbers, where each element represents the max number of jumps that can be made forward from that element, write a program to find the minimum number of jumps needed to reach the end of the array
 
@@ -49,9 +49,9 @@ https://www.geeksforgeeks.org/tiling-problem/
 
 22. PalindromicPartitions.java : Given a string, we want to cut it into pieces such that each piece is a palindrome. Write a function to return the minimum number of cuts needed.
 
-23. LongestCommonSubstring.java : Given two strings â€˜s1â€™ and â€˜s2â€™, find the length of the longest substring which is common in both the strings
+23. LongestCommonSubstring.java : Given two strings ‘s1’ and ‘s2’, find the length of the longest substring which is common in both the strings
 
-24. LongestCommonSubsequence.java : Given two strings â€˜s1â€™ and â€˜s2â€™, find the length of the longest subsequence which is common in both the strings
+24. LongestCommonSubsequence.java : Given two strings ‘s1’ and ‘s2’, find the length of the longest subsequence which is common in both the strings
 
 25. MinDeletionsInsertions.java : Given strings s1 and s2, we need to transform s1 into s2 by deleting and inserting characters. Write a function to calculate the count of the minimum number of deletion and insertion operations.
 
@@ -59,7 +59,7 @@ https://www.geeksforgeeks.org/tiling-problem/
 
 27. MaxSumIncreasingSubsequence.java: Given an array of n positive integers. Write a program to find the sum of maximum sum subsequence of the given array such that the integers in the subsequence are in increasing order.
 
-28. MinLengthSuperSequence.java : Given two sequences â€˜s1â€™ and â€˜s2â€™, write a method to find the length of the shortest sequence which has â€˜s1â€™ and â€˜s2â€™ as subsequences
+28. MinLengthSuperSequence.java : Given two sequences ‘s1’ and ‘s2’, write a method to find the length of the shortest sequence which has ‘s1’ and ‘s2’ as subsequences
 
 29. MinDeletionsToSort.java : Given an integer array, find the minimum deletions to be made so that the array becomes sorted.
 
@@ -100,7 +100,7 @@ Exponential time complexity. use a 1D array to store previous results, this beco
 
 If one side is sorted, then we need to find the Longest Increasing subsequence on the other side. then connect them.
 
-38. Tiling: Assume that we use dominoes measuring 2 Ã— 1 to tile an infinite strip of height 2. How many ways can one tile a 2 Ã— n strip of square cells with 1 Ã— 2 dominoes?
+38. Tiling: Assume that we use dominoes measuring 2 × 1 to tile an infinite strip of height 2. How many ways can one tile a 2 × n strip of square cells with 1 × 2 dominoes?
 	This can be converted to a fibonacci pattern.
 	for 2x1 : 1 way
 	for 2x2 : 2 ways
@@ -109,11 +109,30 @@ If one side is sorted, then we need to find the Longest Increasing subsequence o
 
 	follows fibonacci pattern.
 
-39. 
-================================================================================================================
-Solutions Unknown
------------------------------------------------------------------------------------------------------------------
-1. Given a plot of dimensions 3xN and tiles of dimentions 1x2, In how many ways can we arrange the plot?
-ok, searched for this and found it to be very complex. Lets ignore.
+39. EditDistance.java : Given strings s1 and s2, we need to transform s1 into s2 by deleting, inserting, or replacing characters. Write a function to calculate the count of the minimum number of edit operations.
 
+40. Given a matrix with n rows and m columns (n × m). In each cell there are a number of apples. We start from the upper-left corner of the matrix. We can go down or right one cell. Finally, we need to arrive at the bottom-right corner. Find the maximum number of apples that we can collect.
+	Important thing to remember is we can go either right or down. No left.
+	So at each cell c(i,j) = { a[i][j] + c(i-1,j) OR a[i][j] + c[i,j-1] whichever is higher for i>0 and j>0
+	                         { a[0][0] for j=0,i=0
+	                         { c[i,j-1] if i=0
+	                         { c[i-1,j] if j=0
 
+	int maxApples(int[][] a){
+		int n = a.length; // assuming its a square matrix
+		int[][] dp = new int[n][n]; 
+		for(int i=0;i<n;i++){
+			for(int j=0;j<n;j++){
+				if(i>0 && j>0){
+					dp[i][j] = a[i][j] + Math.max(dp[i-1][j], dp[i][j-1]);
+				}else if(i>0){
+					dp[i][j] = a[i][j] + dp[i-1][j];
+				}else if(j>0){
+					dp[i][j] = a[i][j] + dp[i][j-1];
+				}
+			}
+		}
+		return dp[n-1][n-1];
+	}
+
+41.
