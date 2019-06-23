@@ -1,4 +1,4 @@
-package coding.threading;
+package coding.threading.legacy;
 
 public class Consumer implements Runnable{
 	private SharedResource sr;
