@@ -20,7 +20,7 @@ public class Consumer implements Runnable{
 							printFromSr();
 							System.out.println("CCC Notifying 1");
 							sr.notify();
-							sr.wait();
+//							sr.wait();
 						}
 					
 	
@@ -30,7 +30,7 @@ public class Consumer implements Runnable{
 						printFromSr();
 						System.out.println("CCC Notifying 2");
 						sr.notify();
-						sr.wait();
+//						sr.wait();
 					}
 				}
 			} catch (InterruptedException e) {

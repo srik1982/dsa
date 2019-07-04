@@ -20,7 +20,7 @@ public class Producer implements Runnable{
 							writeToSR();
 							System.out.println("PPP notifying 1");
 							sr.notify();
-							sr.wait();
+//							sr.wait();
 						}
 					
 				} else {
@@ -29,7 +29,7 @@ public class Producer implements Runnable{
 						writeToSR();
 						System.out.println("PPP notifying 2");
 						sr.notify();
-						sr.wait();
+//						sr.wait();
 					}
 				}
 			} catch (InterruptedException e) {
