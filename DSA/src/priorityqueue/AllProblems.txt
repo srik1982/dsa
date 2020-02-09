@@ -1,0 +1,77 @@
+1. What are the minimum and maximum number of elements in a heap of height h
+	2 ^ (h+1) - 1
+
+2. Given a min-heap, give an algorithm for finding the maximum element. 
+	a. In a Min Heap all the max elements are at the leaf level
+	b. if size() gives the size of the heap, the last level starts at size()/2
+	c. Iterate the heap from size()/2 till the end of the heap, search the max element.
+
+3. Give an algorithm for deleting an arbitrary element from min heap. OR Give an algorithm for deleting the ith indexed element in a given min-heap
+	a. iterate over the heap till you find the element - O(n)
+	b. Percolate Down from the element index downwards - O(log n) -- Second problem only this will suffice
+
+4. Give an algorithm to find all elements less than some value of k in a binary heap
+	find(int index, int ELEMENT)
+	a. Create a MinHeap
+	b. Start from root node - index 0. if it is less then ELEMENT, print it
+	c. getLeftChildIndex() and check if it's less than ELEMENT, if yes, print it.
+		i) Recorsively call find(lChildINdex, ELEMENT);
+	d. getRightChildIndex() and check if it's less than ELEMENT, if yes, print it.
+		i) Recorsively call find(rChildINdex, ELEMENT);
+
+5. Give an algorithm for merging two binary max-heaps
+	Let us assume size of first heap is m and size of second heap is n.
+	Heapify takes O(n). Since we have two heaps here, the time complexity will be O(m+n)
+
+6. Kth Smallest Element
+	a. Use a Min Heap. Delete K times which takes the time complexity to O(k*log n)
+	b. For optimal solution, refer QuickSelect under kth_smallest package
+
+7. Implement a stack using heap
+	We need ordering here. LIFO. So use an object with an extra variable.
+	Use this variable for priority. Lets say we use an integer. Keep incrementing the value of this variable.
+	Use a MAX Heap so that the last inserted value is the root.
+
+8. Implement a Queue using Heap.
+	Same as #7. Only use a Min Heap instead of Max Heap.
+
+9. Given a big file containing billions of numbers, how can you find the 10 maximum numbers from that file?
+	Pick 1000 numbers from the file and call heapify on a min heap.
+	call deleteMin 10 times and use those 10 numbers with next set of 990.
+	call deleteMin 10 times and so on till all the numbers are used up.
+	O(n) = n/1000 * (heapify of 1000 element - O(1000) + deleteMin - O(10 * log 1000))
+	     = n since other terms are constants here.
+
+10. Median of sequence of numbers
+	Ref MedianOfNumbers.java
+	Ref https://www.youtube.com/watch?v=1CxyVdA_654
+
+11. Maximum in a sliding window
+	Ref https://www.youtube.com/watch?v=J6o_Wz-UGvc
+	Ref this when you have more time : https://www.youtube.com/watch?v=MK-NZ4hN7rs
+	Ref MaxInSlidingWindow.java
+
+12. Design a heap where the elements in the middle are selected first.
+	This is very similar to median of sequence of numbers. Only difference is we dont calculate the average in case of even numbers.
+	a. Use a Min Heap and a Max Heap.
+	b. Min Heap can have 1 element extra all the time and root of the Min Heap represents the middle element.
+	c. if the |Min Heap| - |Max Geap| > 1, minHeap.deleteMin() and add to maxHeap.
+	Refer the Code for 10 if its still not clear.
+
+13. Merge K sorted LINKED LISTs 
+	Import thing to remember here is we are talking about Linked Lists.
+	Merging can be done using the merge process followed in MergeSort. But that uses a Array. 
+	There might a Linked List way of doing it too. But that would be complex. 
+	Simple way ( and taking more memory obviously) is to add all the nodes to a MinHeap or MaxHeap. 
+	Take out elements and create a new LinkedLIst from scratch. Not the most optimal.
+
+14. Check if the array of numbers represents a min heap.
+	Ref CheckIfMinHeap.java
+
+15. Convert Max Heap to Min Heap
+	Same as the heap sort algorithm. Just a trick question.
+
+16. Merge M Sorted Lists with N elements Each.
+	We can easily solve this problem in O(M * N * logM) time by using a min-heap. The idea is to construct a min-heap of size M and insert first element of each list into it. Then we pop root element (minimum element) from the heap and insert next element from list as popped element. We repeat this process till the heap is exhausted. Depending upon the requirement, we can either print the popped element or store it in auxiliary array.
+
+17.
