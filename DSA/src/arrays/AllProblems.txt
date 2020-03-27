@@ -1,0 +1,6 @@
+1. Rotate an array left by d number of elements
+	Approach 1 is to take a temporary array of size n. 
+	Approach 2 is to take a temporary array of size d. copy only first d elements. In original array, shift each element left and then copy from temp array. Time: O(n) and space O(d)
+	Approach 3 is to take single varible for storing. temp = a[i], shift all elements left, a[n-i] = temp
+
+2. 
